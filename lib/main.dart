@@ -1,4 +1,5 @@
 import 'package:cryptoapp/screens/home/home.dart';
+import 'package:cryptoapp/theme/style.dart';
 import 'package:flutter/material.dart';
 //import 'package:cryptoapp/theme/style.dart';
 
@@ -11,9 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CryptoApp',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: appTheme(),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         "/": (BuildContext context) => HomePage(),
