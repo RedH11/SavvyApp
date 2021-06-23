@@ -9,6 +9,4 @@ class User {
   String password = "";
   int coinCount = 0;
   Map<String, int> investments = {}; // {Event ID, Coin's Invested}
-
-
 }
