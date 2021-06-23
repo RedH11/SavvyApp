@@ -1,0 +1,11 @@
+tasks:
+- make UI (medium)
+- make business logic (hard)
+    - setting up user profiles and data
+    - crypto and money logic
+- setup transactions (medium)
+    - done through an api
+- setup firebase (easy)
+- testing app (hard)
+- testing firebase (hard)
+    -testing servers 
