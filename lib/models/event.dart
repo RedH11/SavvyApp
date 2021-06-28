@@ -9,7 +9,6 @@ class Event {
   DateTime endTime = DateTime.now();
   List<String> participants = [];
   int coinCount = 0;
-
 }
 
 /*

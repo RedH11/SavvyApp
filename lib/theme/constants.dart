@@ -1,6 +1,3 @@
-import 'dart:html';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 /* COLORS */
@@ -20,6 +17,8 @@ const buttonColor = Color.fromARGB(255, 86, 170, 104);
 const greenTextColor = Color.fromARGB(255, 87, 190, 130);
 // Lighter blue
 const blueTextColor = Color.fromARGB(255, 120, 161, 228);
+// Green button color
+const primaryButtonColor = Color.fromARGB(255, 86, 170, 104);
 
 /* FONT */
 const introHeading = TextStyle(fontFamily: "Helvetica Neue", fontSize: 30);
@@ -28,9 +27,9 @@ const topHeading = TextStyle(fontFamily: "Helvetica Neue", fontSize: 25);
 const sectionTitle = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15);
 
 /* SPACING */
-const sidePadding = 20;
-const topPadding = 15; // From containers to the top of the page
-const betweenContainers = 10;
+const double sidePadding = 20;
+const double topPadding = 30; // From containers to the top of the page
+const double betweenContainers = 10;
 
 /* DIMENSIONS */
 const buttonHeight = 60;
