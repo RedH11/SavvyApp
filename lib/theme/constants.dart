@@ -21,8 +21,9 @@ const blueTextColor = Color.fromARGB(255, 120, 161, 228);
 const primaryButtonColor = Color.fromARGB(255, 86, 170, 104);
 
 /* FONT */
-const introHeading = TextStyle(fontFamily: "Helvetica Neue", fontSize: 30);
-const introBody = TextStyle(fontFamily: "Helvetica Neue", fontSize: 20);
+const mainHeading = TextStyle(fontFamily: "Helvetica Neue", fontSize: 30, fontWeight: FontWeight.normal, color: primaryTextColor);
+const mainBody = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15, fontWeight: FontWeight.normal, color: primaryTextColor);
+const mainBodyBold = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15, fontWeight: FontWeight.bold, color: primaryTextColor);
 const topHeading = TextStyle(fontFamily: "Helvetica Neue", fontSize: 25);
 const sectionTitle = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15);
 

@@ -13,9 +13,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'CryptoApp',
       theme: ThemeData(
-        textTheme: Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
-        buttonColor: primaryButtonColor,
-        visualDensity: VisualDensity.adaptivePlatformDensity // Conforms the UI to the screen size
+          // Default Brightness and Colors
+          brightness: Brightness.light,
+          primaryColor: primaryTextColor,
+          accentColor: Colors.cyan[600], // TEST
+
+          // Default font family
+          fontFamily: "Helvetica Neue",
+
+          // Default TextThemes
+          textTheme: TextTheme(
+            headline1: mainHeading,
+            headline2: sectionTitle,
+            bodyText1: mainBody,
+          ),
+
+          buttonColor: primaryButtonColor,
+          visualDensity: VisualDensity.adaptivePlatformDensity // Conforms the UI to the screen size
+
       ),
       home: IntroScreen(),
     );
