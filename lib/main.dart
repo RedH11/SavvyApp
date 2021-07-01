@@ -27,23 +27,13 @@ class MyApp extends StatelessWidget {
             headline2: sectionTitle,
             bodyText1: mainBody,
           ),
-
           buttonColor: primaryButtonColor,
-          visualDensity: VisualDensity.adaptivePlatformDensity // Conforms the UI to the screen size
+          visualDensity: VisualDensity
+              .adaptivePlatformDensity // Conforms the UI to the screen size
 
-      ),
-      home: IntroScreen(),
+          ),
+      //home: IntroScreen(),
+      home: HomeScreen(),
     );
   }
 }
-
-///
-///       // theme: ThemeData(
-//       //   primarySwatch: Colors.blue),
-//         //"/ExScreen2": (BuildContext context) => Sign-InPage,
-//       },
-//       // home: MyHomePage(title: 'Flutter Demo Home Page'),
-//      initialRoute: '/',
-//       routes: <String, WidgetBuilder>{
-//         "/": (BuildContext context) => HomePage(),
-///
