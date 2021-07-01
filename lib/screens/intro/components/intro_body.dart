@@ -1,18 +1,19 @@
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../event_descr.dart';
 
-class Body extends StatelessWidget {
+
+class IntroBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Defining main body text
     RichText bodyText = new RichText(
       text: new TextSpan(
-        // Note: Styles for TextSpans must be explicitly defined.
-        // Child text spans will inherit styles from parent
         style: mainBody,
         children: <TextSpan>[
-          new TextSpan(text: 'We '),
+          new TextSpan(text: 'We want to '),
           new TextSpan(text: 'empower you ', style: new TextStyle(fontWeight: FontWeight.bold)),
           new TextSpan(text: 'to '),
           new TextSpan(text: 'invest if your dream future 🏖', style: new TextStyle(fontWeight: FontWeight.bold)),
@@ -21,11 +22,11 @@ class Body extends StatelessWidget {
           new TextSpan(text: 'crypto-investments ', style: new TextStyle(fontWeight: FontWeight.bold)),
           new TextSpan(text: 'instead of having your money sit in a bank doing nothing 🏦'),
           new TextSpan(text: '\n\nWe are starting '),
-          new TextSpan(text: 'a movement, a revolution ', style: new TextStyle(fontWeight: FontWeight.bold)),
-          new TextSpan(text: 'to pool our resources to get our share in crypto-markets where '),
+          new TextSpan(text: 'a revolution ', style: new TextStyle(fontWeight: FontWeight.bold)),
+          new TextSpan(text: 'to pool our resources together and profit in crypto-markets where '),
           new TextSpan(text: 'none of us can compete alone 💎', style: new TextStyle(fontWeight: FontWeight.bold)),
           new TextSpan(text: '\n\nWith your \$SavvyCoins, '),
-          new TextSpan(text: 'join events', style: new TextStyle(fontWeight: FontWeight.bold)),
+          new TextSpan(text: 'join events ', style: new TextStyle(fontWeight: FontWeight.bold)),
           new TextSpan(text: 'investing in everything from '),
           new TextSpan(text: 'luxury Virtual Real-Estate to the hottest NFT\'s ✨', style: new TextStyle(fontWeight: FontWeight.bold)),
           new TextSpan(text: '\n\nAnd after the event ends, you '),
@@ -37,6 +38,9 @@ class Body extends StatelessWidget {
       ),
     );
 
+    ///
+    /// Main Container
+    ///
     return Container(
         // 100$ of screen height
         height: double.infinity,
@@ -44,17 +48,21 @@ class Body extends StatelessWidget {
         width: double.infinity,
 
         child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
 
           children: <Widget>[
+            // Title Text
             Padding(
-              padding: EdgeInsets.fromLTRB(10, 60, 20, 10),
-              child: Text("Welcome to Savvy! 🥳 ", textAlign: TextAlign.left, style: Theme.of(context)
-                  .textTheme
-                  .headline1
+              padding: EdgeInsets.fromLTRB(40, 100, 0, 10),
+              child:
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("Welcome! 🥳", textAlign: TextAlign.left, style: Theme.of(context)
+                        .textTheme
+                        .headline1
+                )
               ),
             ),
-            // Title Text
+
             // Body Text
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
@@ -62,6 +70,8 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: 30),
             // Circular Next Button
+
+            // Next Screen Button
             Align(
                 alignment: Alignment.bottomRight, child:  Container(
                 margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
@@ -70,7 +80,13 @@ class Body extends StatelessWidget {
                     color: primaryButtonColor,
                     shape: BoxShape.circle,
                   ),
-               child: new IconButton(icon: new Icon(Icons.arrow_forward_ios, color: Colors.white,), onPressed: () => print("Next Pressed")),)
+               child: new IconButton(icon: new Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                   onPressed: () => Navigator.push(
+                                         context,
+                                         MaterialPageRoute(builder: (context) => EventDescr()),
+                   )
+               ),
+            )
              ),
           ],
         )

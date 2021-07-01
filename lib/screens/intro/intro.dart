@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cryptoapp/screens/intro/components/body.dart';
+import 'package:cryptoapp/screens/intro/components/intro_body.dart';
 
 ///
 /// https://stackoverflow.com/questions/50751226/how-to-dynamically-resize-text-in-flutter
@@ -9,7 +9,7 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Body(),
+      body: IntroBody(),
     );
   }
 }

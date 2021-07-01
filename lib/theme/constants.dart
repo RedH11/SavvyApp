@@ -24,15 +24,16 @@ const primaryButtonColor = Color.fromARGB(255, 86, 170, 104);
 const mainHeading = TextStyle(fontFamily: "Helvetica Neue", fontSize: 30, fontWeight: FontWeight.normal, color: primaryTextColor);
 const mainBody = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15, fontWeight: FontWeight.normal, color: primaryTextColor);
 const mainBodyBold = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15, fontWeight: FontWeight.bold, color: primaryTextColor);
-const topHeading = TextStyle(fontFamily: "Helvetica Neue", fontSize: 25);
-const sectionTitle = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15);
+const topHeading = TextStyle(fontFamily: "Helvetica Neue", fontSize: 25, color: primaryTextColor);
+const sectionTitle = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15, color: primaryTextColor);
+const sectionTitleBold = TextStyle(fontFamily: "Helvetica Neue", fontSize: 15, fontWeight: FontWeight.bold, color: primaryTextColor);
 
 /* SPACING */
 const double sidePadding = 20;
-const double topPadding = 30; // From containers to the top of the page
+const double topPadding = 100; // From containers to the top of the page
 const double betweenContainers = 10;
 
 /* DIMENSIONS */
 const buttonHeight = 60;
-const containerRoundness = 15;
-const buttonRoundness = 15;
+const containerRoundness = 15.0;
+const buttonRoundness = 15.0;
