@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
           // Default Brightness and Colors
           brightness: Brightness.light,
           primaryColor: primaryTextColor,
-          accentColor: Colors.cyan[600], // TEST
 
           // Default font family
           fontFamily: "Helvetica Neue",
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
           // Default TextThemes
           textTheme: TextTheme(
             headline1: mainHeading,
-            headline2: sectionTitle,
+            headline2: sectionTitleBold,
             bodyText1: mainBody,
           ),
           buttonColor: primaryButtonColor,
@@ -32,8 +31,8 @@ class MyApp extends StatelessWidget {
               .adaptivePlatformDensity // Conforms the UI to the screen size
 
           ),
-      //home: IntroScreen(),
-      home: HomeScreen(),
+      home: IntroScreen(),
+      //home: HomeScreen(),
     );
   }
 }
