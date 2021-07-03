@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:cryptoapp/theme/constants.dart';
 
 class Menu extends AppBar {
-  //const Menu({ Key? key }) : super(key: key);
+  //const Menu({Key? key}) : super(key: key);
 
-  @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("Dashboard"),
-      //actions: Icon()
+      title: Text("Dash"),
+      // actions:]
     );
   }
 }

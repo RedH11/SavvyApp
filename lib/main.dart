@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
               .adaptivePlatformDensity // Conforms the UI to the screen size
 
           ),
-      home: IntroScreen(),
-      //home: HomeScreen(),
+      //home: IntroScreen(),
+      home: HomeScreen(),
     );
   }
 }
