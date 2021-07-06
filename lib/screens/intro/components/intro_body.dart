@@ -2,6 +2,7 @@ import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../event_descr.dart';
+import 'intro_buttons.dart';
 
 
 class IntroBody extends StatelessWidget {
@@ -11,7 +12,7 @@ class IntroBody extends StatelessWidget {
     // Defining main body text
     RichText bodyText = new RichText(
       text: new TextSpan(
-        style: mainBody,
+        style: mainBodyStyle,
         children: <TextSpan>[
           new TextSpan(text: 'We want to '),
           new TextSpan(text: 'empower you ', style: new TextStyle(fontWeight: FontWeight.bold)),
@@ -37,6 +38,9 @@ class IntroBody extends StatelessWidget {
         ],
       ),
     );
+
+    Widget nextPageButton = NextPageButton.init(context, EventDescr());
+
 
     ///
     /// Main Container
@@ -72,22 +76,7 @@ class IntroBody extends StatelessWidget {
             // Circular Next Button
 
             // Next Screen Button
-            Align(
-                alignment: Alignment.bottomRight, child:  Container(
-                margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
-                decoration:
-                  BoxDecoration(
-                    color: primaryButtonColor,
-                    shape: BoxShape.circle,
-                  ),
-               child: new IconButton(icon: new Icon(Icons.arrow_forward_ios, color: Colors.white,),
-                   onPressed: () => Navigator.push(
-                                         context,
-                                         MaterialPageRoute(builder: (context) => EventDescr()),
-                   )
-               ),
-            )
-             ),
+            nextPageButton
           ],
         )
       );

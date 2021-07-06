@@ -2,6 +2,8 @@ import 'package:cryptoapp/screens/intro/rewards_descr.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'intro_buttons.dart';
+
 class EventDescrBody extends StatelessWidget {
 
   @override
@@ -59,22 +61,7 @@ class EventDescrBody extends StatelessWidget {
       ]
     );
 
-    Widget nextPageButton = Align(
-        alignment: Alignment.bottomRight, child:  Container(
-        margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
-        decoration:
-          BoxDecoration(
-            color: primaryButtonColor,
-            shape: BoxShape.circle,
-          ),
-        child: new IconButton(icon: new Icon(Icons.arrow_forward_ios, color: Colors.white,),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => RewardsDescr()),
-            )
-         ),
-      )
-    );
+    Widget nextPageButton = NextPageButton.init(context, RewardsDescr());
 
     ///
     /// Primary Container (Background)
@@ -123,19 +110,18 @@ class EventDescrBody extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("🔥 This is one of our rare BLITZ events\n", style: mainBody),
-                            Text("🎯 Each event has an aim, a BLITZ is high reward high risk investing\n", style: mainBody),
-                            Text("💎 You join with your \$SavvyCoins and decide how much to invest\n", style: mainBody),
-                            Text("☕️ The timer counts down to event's start, and then our Savants get to work\n", style: mainBody),
-                            Text("📈 During the event they constantly invest and monitor the assets\n", style: mainBody),
-                            Text("🚀 And when the event finishes, you get the returns on your coins invested\n", style: mainBody),
-                            Text("‼️ Just don't wait too long, there are a limited amount of slots for each event!\n", style: mainBody),
+                            Text("🔥 This is one of our rare BLITZ events\n", style: mainBodyStyle),
+                            Text("🎯 Each event has an aim, a BLITZ is high reward high risk investing\n", style: mainBodyStyle),
+                            Text("💎 You join with your \$SavvyCoins and decide how much to invest\n", style: mainBodyStyle),
+                            Text("☕️ The timer counts down to event's start, and then our Savants get to work\n", style: mainBodyStyle),
+                            Text("📈 During the event they constantly invest and monitor the assets\n", style: mainBodyStyle),
+                            Text("🚀 And when the event finishes, you get the returns on your coins invested\n", style: mainBodyStyle),
+                            Text("‼️ Just don't wait too long, there are a limited amount of slots for each event!\n", style: mainBodyStyle),
                           ]
                     )
                     )
                 )
             ),
-
             nextPageButton
           ],
         )

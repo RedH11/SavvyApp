@@ -22,17 +22,17 @@ class MyApp extends StatelessWidget {
 
           // Default TextThemes
           textTheme: TextTheme(
-            headline1: mainHeading,
-            headline2: sectionTitleBold,
-            bodyText1: mainBody,
+            headline1: mainHeadingStyle,
+            headline2: sectionTitleBoldStyle,
+            bodyText1: mainBodyStyle,
           ),
           buttonColor: primaryButtonColor,
           visualDensity: VisualDensity
               .adaptivePlatformDensity // Conforms the UI to the screen size
 
           ),
-      //home: IntroScreen(),
-      home: HomeScreen(),
+      home: IntroScreen(),
+      //home: HomeScreen(),
     );
   }
 }
