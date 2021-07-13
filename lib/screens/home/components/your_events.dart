@@ -8,6 +8,8 @@ class YourEvents extends StatefulWidget {
   _YourEventsState createState() => _YourEventsState();
 }
 
+// Your events bubble
+// Going to connect to bloc that containts the events model class
 class _YourEventsState extends State<YourEvents> {
   @override
   Widget build(BuildContext context) {
