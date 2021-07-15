@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cryptoapp/screens/home/components/home_body.dart';
 import 'package:cryptoapp/theme/constants.dart';
 
+// Main home class
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
