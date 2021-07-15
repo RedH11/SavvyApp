@@ -2,7 +2,7 @@ import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../event_descr.dart';
-import 'intro_buttons.dart';
+import 'widget_components/intro_buttons.dart';
 
 
 class IntroBody extends StatelessWidget {

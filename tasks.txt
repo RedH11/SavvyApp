@@ -13,7 +13,7 @@ tasks:
 
 SCREEN ASSIGNMENT (w/ Estimated Difficulty):
 
-Intro - 2
+Intro - 2 (COMPLETED!!!)
 Login / Sign up - 7
 Home - 8
 Settings - 5

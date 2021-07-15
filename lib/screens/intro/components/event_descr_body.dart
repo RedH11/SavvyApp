@@ -2,7 +2,7 @@ import 'package:cryptoapp/screens/intro/rewards_descr.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'intro_buttons.dart';
+import 'widget_components/intro_buttons.dart';
 
 class EventDescrBody extends StatelessWidget {
 

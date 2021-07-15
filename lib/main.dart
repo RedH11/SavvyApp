@@ -1,4 +1,5 @@
 import 'package:cryptoapp/screens/home/home.dart';
+import 'package:cryptoapp/screens/sign-in/get_phone_num.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
 import 'package:cryptoapp/theme/constants.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
               .adaptivePlatformDensity // Conforms the UI to the screen size
 
           ),
-      home: IntroScreen(),
+      home: GetPhoneNumScreen(),
       //home: HomeScreen(),
     );
   }

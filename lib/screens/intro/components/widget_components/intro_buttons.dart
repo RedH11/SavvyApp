@@ -33,7 +33,7 @@ class RedeemRewardsButton {
         margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
         decoration:
       BoxDecoration(
-        color: primaryButtonColor,
+        color: fadedPrimaryButtonColor,
           borderRadius: BorderRadius.all(Radius.circular(20.0))
       ),
       child: new TextButton(
@@ -41,6 +41,29 @@ class RedeemRewardsButton {
               child: Text("Redeem Rewards!", style: redeemRewardsStyle)
           )
       ),
+    );
+  }
+}
+
+class FinalNextPageButton {
+
+  static Align init(BuildContext context, nextScreen) {
+    return Align(
+      alignment: Alignment.bottomCenter, child:  Container(
+        width: 300,
+        height: 40,
+        margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
+        decoration:
+        BoxDecoration(
+            color: primaryButtonColor,
+            borderRadius: BorderRadius.all(Radius.circular(20.0))
+        ),
+        child: new TextButton(
+            onPressed: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => nextScreen)),
+            child: Text("Let's Get Started!", style: finalNextPageButtonStyle)
+        )
+    ),
     );
   }
 }

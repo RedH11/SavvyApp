@@ -1,21 +1,22 @@
+import 'package:cryptoapp/models/all_goals.dart';
 import 'package:cryptoapp/screens/home/home.dart';
-import 'package:cryptoapp/screens/intro/components/goal.dart';
-import 'package:cryptoapp/screens/intro/components/level_progress_bar.dart';
-import 'package:cryptoapp/screens/intro/components/section_title.dart';
-import 'package:cryptoapp/screens/intro/components/white_container.dart';
+import 'package:cryptoapp/screens/intro/components/widget_components/goal_display.dart';
+import 'package:cryptoapp/screens/intro/components/widget_components/level_progress_bar.dart';
+import 'package:cryptoapp/screens/intro/components/widget_components/section_title.dart';
+import 'package:cryptoapp/screens/intro/components/widget_components/white_container.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
 import 'package:cryptoapp/theme/constants.dart';
-import 'package:cryptoapp/screens/intro/components/intro_buttons.dart';
+import 'package:cryptoapp/screens/intro/components/widget_components/intro_buttons.dart';
 import 'package:flutter/material.dart';
 
-import 'left_align_text.dart';
+import 'widget_components/left_align_text.dart';
 
 class RewardsDescrBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
 
-    Widget nextPageButton = NextPageButton.init(context, IntroScreen());
+    Widget finalNextPageButton = FinalNextPageButton.init(context, IntroScreen());
 
     RichText rewardDescrTitle = new RichText(
         text: new TextSpan(
@@ -40,7 +41,8 @@ class RewardsDescrBody extends StatelessWidget {
 
     Align redeemRewardsBtn = RedeemRewardsButton.init();
 
-    Padding exGoalOne = Goal.init();
+    Padding exGoalOne = GoalDisplay.init(allGoals[0]);
+    Padding exGoalTwo = GoalDisplay.init(allGoals[1]);
 
     return Container(
       color: backgroundColor,
@@ -56,13 +58,27 @@ class RewardsDescrBody extends StatelessWidget {
             SizedBox(height: 10,),
             redeemRewardsBtn,
             goalsTitle,
-            exGoalOne
+            exGoalOne,
+            exGoalTwo,
+            SizedBox(height: 20,)
           ]
           ),
           WhiteContainer.init(10.0, [
-            SectionTitle.init(rewardDescrTitle)
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text("🍾 Your level increases by completing #Goals \n", style: mainBodyStyle),
+                      Text("👀 And each time you level up you get a mystery reward\n", style: mainBodyStyle),
+                      Text("💎 They include NFT's from local artists, extra invites, and exclusive access to \$Savvy in-person events,\n", style: mainBodyStyle),
+                      Text("🏅 So you'll want to complete as many goals as you can!\n", style: mainBodyStyle),
+                    ]
+                )
+            )
           ]),
-          nextPageButton
+          SizedBox(height: 20,),
+          finalNextPageButton
         ],
       )
     );

@@ -22,6 +22,10 @@ const greenTextColor = Color.fromARGB(255, 86, 170, 104);
 const blueTextColor = Color.fromARGB(255, 120, 161, 228);
 // Green button color
 const primaryButtonColor = Color.fromARGB(255, 86, 170, 104);
+const fadedPrimaryButtonColor = Color.fromARGB(155, 86, 170, 104);
+// Light grey textfield bottom color
+const TEXT_FIELD_COLOR = Color.fromARGB(255, 195, 195, 195);
+
 // Light Red
 const blitzEventColor = Color.fromARGB(255, 253, 236, 236);
 // Light blue
@@ -38,6 +42,7 @@ const progressBarBackgroundColor = Color.fromARGB(255, 238, 238, 238);
 /* FONT */
 const main_font = "Sofia Pro";
 const mainHeadingStyle = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.normal, color: primaryTextColor);
+const mainHeadingBoldStyle = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.bold, color: primaryTextColor);
 const mainBodyStyle = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.normal, color: primaryTextColor);
 const mainBodyBoldStyle = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.bold, color: primaryTextColor);
 const topHeadingStyle = TextStyle(fontFamily: main_font, fontSize: 25, color: primaryTextColor);
@@ -49,6 +54,10 @@ const eventTimerStyle = TextStyle(fontFamily: main_font, fontSize: 16, fontWeigh
 const levelDisplayStyle = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic, color: greenTextColor);
 const redeemRewardsStyle = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white);
 const goalsTitleStyle = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.bold, color: primaryTextColor);
+const goalDisplayStyle = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
+const finalNextPageButtonStyle = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: Colors.white);
+const TEXT_FIELD_LABEL_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.normal, color: TEXT_FIELD_COLOR);
+const INTRO_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
 
 /* SPACING */
 const double sidePadding = 20;
