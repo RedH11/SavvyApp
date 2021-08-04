@@ -3,8 +3,9 @@ import 'package:cryptoapp/screens/home/home.dart';
 import 'package:cryptoapp/screens/intro/components/widget_components/goal_display.dart';
 import 'package:cryptoapp/screens/intro/components/widget_components/level_progress_bar.dart';
 import 'package:cryptoapp/screens/intro/components/widget_components/section_title.dart';
-import 'package:cryptoapp/screens/intro/components/widget_components/white_container.dart';
+import 'package:cryptoapp/screens/widgets/white_container.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
+import 'package:cryptoapp/screens/sign-in/get_phone_num.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:cryptoapp/screens/intro/components/widget_components/intro_buttons.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class RewardsDescrBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Widget finalNextPageButton = FinalNextPageButton.init(context, IntroScreen());
+    Widget finalNextPageButton = FinalNextPageButton.init(context, ParentPhoneNumScreen());
 
     RichText rewardDescrTitle = new RichText(
         text: new TextSpan(

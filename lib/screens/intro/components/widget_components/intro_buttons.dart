@@ -9,7 +9,7 @@ class NextPageButton {
         margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
         decoration:
         BoxDecoration(
-          color: primaryButtonColor,
+          color: BUTTON_COLOR,
           shape: BoxShape.circle,
         ),
         child: new IconButton(
@@ -33,7 +33,7 @@ class RedeemRewardsButton {
         margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
         decoration:
       BoxDecoration(
-        color: fadedPrimaryButtonColor,
+        color: FADED_BUTTON_COLOR,
           borderRadius: BorderRadius.all(Radius.circular(20.0))
       ),
       child: new TextButton(
@@ -51,17 +51,17 @@ class FinalNextPageButton {
     return Align(
       alignment: Alignment.bottomCenter, child:  Container(
         width: 300,
-        height: 40,
+        height: 50,
         margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
         decoration:
         BoxDecoration(
-            color: primaryButtonColor,
-            borderRadius: BorderRadius.all(Radius.circular(20.0))
+            color: BUTTON_COLOR,
+            borderRadius: BorderRadius.all(Radius.circular(10.0))
         ),
         child: new TextButton(
             onPressed: () => Navigator.push(context,
               MaterialPageRoute(builder: (context) => nextScreen)),
-            child: Text("Let's Get Started!", style: finalNextPageButtonStyle)
+            child: Text("Let's Get Started!", style: FINAL_NEXT_PAGE_BUTTON_STYLE)
         )
     ),
     );

@@ -27,3 +27,6 @@ Intro, Login / Sign up, Event - Joining Event - Event Joined, Deposit
 
 KABIR:
 Settings, Invites, Home, Statistics
+
+
+Also use the flutter native splash screen to add a splash screen

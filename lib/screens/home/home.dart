@@ -5,6 +5,10 @@ import 'package:cryptoapp/theme/constants.dart';
 
 // Main home class
 class HomeScreen extends StatelessWidget {
+
+  Map userData;
+  HomeScreen(this.userData);
+
   @override
   Widget build(BuildContext context) {
     Widget menuIcons = Container(

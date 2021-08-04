@@ -17,7 +17,7 @@ class IntroBody extends StatelessWidget {
           new TextSpan(text: 'We want to '),
           new TextSpan(text: 'empower you ', style: new TextStyle(fontWeight: FontWeight.bold)),
           new TextSpan(text: 'to '),
-          new TextSpan(text: 'invest if your dream future 🏖', style: new TextStyle(fontWeight: FontWeight.bold)),
+          new TextSpan(text: 'invest in your dream future 🏖', style: new TextStyle(fontWeight: FontWeight.bold)),
           new TextSpan(text: '\n\nGet \$\$\$ compound earnings ', style: new TextStyle(fontWeight: FontWeight.bold)),
           new TextSpan(text: 'from '),
           new TextSpan(text: 'crypto-investments ', style: new TextStyle(fontWeight: FontWeight.bold)),
@@ -82,23 +82,3 @@ class IntroBody extends StatelessWidget {
       );
   }
 }
-
-///
-/// Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: <Widget>[
-//             Padding(
-//                 padding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: topPadding),
-//             ),
-//             Text("Title Text", style: Theme.of(context)
-//                 .textTheme
-//                 .headline3
-//             ),
-//             Text("TEST TEXT", style: Theme.of(context)
-//                 .textTheme
-//                 .headline5,
-//             ),
-//           ElevatedButton(onPressed: () => print("Text"), child: Text("--> SVG"))
-//           ],
-//         ),

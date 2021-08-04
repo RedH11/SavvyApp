@@ -13,19 +13,16 @@ const darkerSecondaryTextColor = Color.fromARGB(255, 139, 139, 140);
 const backgroundColor = Color.fromARGB(255, 243, 243, 243);
 // White
 const containerColor = Color.fromARGB(255, 255, 255, 255);
-// Semi-dark green
-const buttonColor = Color.fromARGB(255, 86, 170, 104);
 // Lighter green
 const greenTextColor = Color.fromARGB(255, 86, 170, 104);
 //Color.fromARGB(255, 87, 190, 130);
 // Lighter blue
 const blueTextColor = Color.fromARGB(255, 120, 161, 228);
 // Green button color
-const primaryButtonColor = Color.fromARGB(255, 86, 170, 104);
-const fadedPrimaryButtonColor = Color.fromARGB(155, 86, 170, 104);
-// Light grey textfield bottom color
+const BUTTON_COLOR = Color.fromARGB(255, 86, 170, 104);
+const FADED_BUTTON_COLOR = Color.fromARGB(100, 86, 170, 104);
+// Light grey text-field bottom color
 const TEXT_FIELD_COLOR = Color.fromARGB(255, 195, 195, 195);
-
 // Light Red
 const blitzEventColor = Color.fromARGB(255, 253, 236, 236);
 // Light blue
@@ -38,6 +35,12 @@ const mainstreamEventColor = Color.fromARGB(255, 253, 245, 236);
 const treeGreenEventColor = Color.fromARGB(255, 236, 253, 237);
 // Light grey
 const progressBarBackgroundColor = Color.fromARGB(255, 238, 238, 238);
+// Light grey
+const DIVIDER_COLOR = Color.fromARGB(255, 112, 112, 112);
+// Green
+const MONEY_TEXT_COLOR = Color.fromARGB(255, 87, 190, 130);
+// Light Grey
+const PROGRESS_BAR_BACKGROUND_COLOR = Color.fromARGB(255, 238, 238, 238);
 
 /* FONT */
 const main_font = "Sofia Pro";
@@ -55,9 +58,19 @@ const levelDisplayStyle = TextStyle(fontFamily: main_font, fontSize: 30, fontWei
 const redeemRewardsStyle = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white);
 const goalsTitleStyle = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.bold, color: primaryTextColor);
 const goalDisplayStyle = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
-const finalNextPageButtonStyle = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: Colors.white);
+const FINAL_NEXT_PAGE_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: Colors.white);
 const TEXT_FIELD_LABEL_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.normal, color: TEXT_FIELD_COLOR);
 const INTRO_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
+const TEXT_FIELD_INPUT_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.normal, color: primaryTextColor);
+const STATS_COIN_VAL_STYLE = TextStyle(fontFamily: main_font, fontSize: 60, fontWeight: FontWeight.normal, color: primaryTextColor);
+const STATS_SECTION_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.normal, color: primaryTextColor);
+const STATS_BODY_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
+const STATS_BODY_BOLD_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.bold, color: primaryTextColor);
+const STATS_BODY_MONEY_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: MONEY_TEXT_COLOR);
+const STATS_BODY_MONEY_BOLD_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.bold, color: MONEY_TEXT_COLOR);
+const STATS_LEVEL_DISPLAY_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.bold, color: MONEY_TEXT_COLOR);
+const REDEEM_REWARDS_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white);
+const STATS_GOALS_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.bold, color: primaryTextColor);
 
 /* SPACING */
 const double sidePadding = 20;

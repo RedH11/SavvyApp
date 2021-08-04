@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "614700867396",
+    "project_id": "savvy-db82d",
+    "storage_bucket": "savvy-db82d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614700867396:android:c2928b9ab19500e6724111",
+        "android_client_info": {
+          "package_name": "com.example.cryptoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614700867396-keh9m9h159ul3a9gkkk00lllmipahb92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAATAff5uwX4_2ku0zc1OaIRIf9rqvlnjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614700867396-keh9m9h159ul3a9gkkk00lllmipahb92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

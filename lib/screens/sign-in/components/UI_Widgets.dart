@@ -1,4 +1,3 @@
-import 'package:cryptoapp/screens/sign-in/components/phone_num_input_formatter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
@@ -28,34 +27,6 @@ class WidgetGenerator {
     );
   }
 
-  // NOT CURRENTLY IN USE
-  Padding getPhoneTextField(String backgroundText, TextInputType textInputType) {
-    final _mobileFormatter = NumberTextInputFormatter();
-
-    return Padding(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: TextField(
-            keyboardType: textInputType,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly,
-              _mobileFormatter,
-              ],
-            obscureText: false,
-            decoration: InputDecoration(
-              border: UnderlineInputBorder(
-                borderSide: BorderSide(color: TEXT_FIELD_COLOR),
-              ),
-              labelText: backgroundText,
-              labelStyle: TEXT_FIELD_LABEL_STYLE,
-              focusColor: buttonColor
-            ),
-          ),
-        )
-    );
-  }
-
   Padding getPinCodeTextField(BuildContext context) {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
@@ -67,7 +38,7 @@ class WidgetGenerator {
               print(value);
             },
             appContext: context,
-            cursorColor: buttonColor,
+            cursorColor: BUTTON_COLOR,
             pinTheme: PinTheme(
               inactiveColor: primaryTextColor,
               fieldHeight: 50,
@@ -78,21 +49,56 @@ class WidgetGenerator {
     );
   }
 
-    Align getNextPageButton(BuildContext context, nextScreen) {
-      return Align(
+  Align getBackButton(BuildContext context, nextScreen) {
+
+    Color currentColor = primaryTextColor;
+
+    return Align(
+      alignment: Alignment.topLeft, child:  Container(
+        margin: EdgeInsets.fromLTRB(15, 60, 0, 0),
+        child: TextButton.icon(
+                  onPressed: () {
+                  Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => nextScreen));
+                },
+                label: Text("Enter a New Phone", style: mainBodyStyle,),
+                icon: Icon(Icons.arrow_back_ios, color: currentColor, size: 20,),
+              ),
+    ),
+    );
+  }
+
+    Align getNextPageButton(BuildContext context, nextScreen, bool isEnabled) {
+
+        var currentColor = BUTTON_COLOR;
+
+        if (isEnabled == false) {
+          currentColor = FADED_BUTTON_COLOR;
+        }
+
+        return Align(
         alignment: Alignment.bottomCenter, child:  Container(
-          width: 300,
+          width: 280,
           height: 50,
-          margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
+          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
           decoration:
           BoxDecoration(
-              color: primaryButtonColor,
+              color: currentColor,
               borderRadius: BorderRadius.all(Radius.circular(10.0))
           ),
           child: new TextButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => nextScreen)),
-              child: Text("Next", style: finalNextPageButtonStyle)
+              onPressed: () {
+                if (isEnabled) {
+                  // Go to next page
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => nextScreen));
+                } else {
+                  // Do nothing
+                  null;
+                }
+              }
+              ,
+              child: Text("Next", style: FINAL_NEXT_PAGE_BUTTON_STYLE)
           )
       ),
       );
@@ -104,6 +110,4 @@ class WidgetGenerator {
           child: Container(height: 80, color: backgroundColor,)
         );
       }
-
-
 }

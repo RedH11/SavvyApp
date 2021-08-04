@@ -1,8 +1,7 @@
 import 'package:cryptoapp/models/goal.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
-
-import 'alignment_padding.dart';
+import '../../../widgets/alignment_padding.dart';
 
 class GoalDisplay {
 
@@ -13,11 +12,6 @@ class GoalDisplay {
         Alignment.centerLeft,
         EdgeInsets.symmetric(vertical: 0, horizontal: 10)
     );
-
-    ///
-    /// When implemented for the real goal system,
-    /// will have to pull current stats from firebase for the objective
-    ///
 
     Align goalCountDisplay = AlignmentPadding.forWidget(
       Text(("0 / " + goalInfo.objectiveTotal.toString())),

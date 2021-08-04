@@ -1,16 +1,22 @@
 import 'package:cryptoapp/screens/home/home.dart';
+import 'package:cryptoapp/screens/loading/loading.dart';
 import 'package:cryptoapp/screens/sign-in/get_phone_num.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
 import 'package:cryptoapp/theme/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'CryptoApp',
       theme: ThemeData(
@@ -27,12 +33,30 @@ class MyApp extends StatelessWidget {
             headline2: sectionTitleBoldStyle,
             bodyText1: mainBodyStyle,
           ),
-          buttonColor: primaryButtonColor,
+          buttonColor: BUTTON_COLOR,
           visualDensity: VisualDensity
               .adaptivePlatformDensity // Conforms the UI to the screen size
 
           ),
-      home: GetPhoneNumScreen(),
+      home:  FutureBuilder(
+        future: _fbApp,
+        builder: (context, snapshot) {
+          // Check if there are any general errors
+          if (snapshot.hasError) {
+            print('You have an error! ${snapshot.error.toString()}');
+            return Text('Something went wrong!');
+          // Check if the user is logged in
+          } else if (snapshot.hasData) {
+            return LoadingScreen();
+            //return IntroScreen();
+          // Without wifi just show a circular progress indicator
+          } else {
+            return Center(
+              child: CircularProgressIndicator()
+            );
+          }
+        },
+      ),
       //home: HomeScreen(),
     );
   }
