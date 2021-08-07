@@ -39,7 +39,7 @@ class TopAppBar {
   AppBar getAppBar(titleText) {
     return AppBar(
       title: Text(titleText,
-          style: TextStyle(color: primaryTextColor, fontSize: 23)),
+          style: TextStyle(color: primaryTextColor, fontSize: 20)),
       actions: [menuIcons],
       backgroundColor: Colors.white,
       toolbarHeight: 80,

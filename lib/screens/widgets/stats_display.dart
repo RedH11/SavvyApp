@@ -1,3 +1,4 @@
+import 'package:cryptoapp/screens/intro/components/widget_components/level_progress_bar.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,32 +25,39 @@ class StatsDisplay {
 
   Padding getTitle(titleText){
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Text(titleText, style: STATS_SECTION_TITLE_STYLE)
+        padding: EdgeInsets.fromLTRB(15, 15, 0, 10),
+        child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(titleText, style: STATS_SECTION_TITLE_STYLE))
     );
   }
 
   Padding getDisplay(leftText, rightText) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Row(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(leftText, style: STATS_BODY_STYLE),
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(rightText, style: STATS_BODY_STYLE),
-          )
-        ],
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      child: Container(
+        // Width of the entire container
+        width: double.infinity,
+        child: Row(
+          children: <Widget>[
+            Expanded(flex: 1, child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(leftText, style: STATS_BODY_STYLE),
+            )
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(rightText, style: STATS_BODY_STYLE),
+            )
+          ],
+        ),
+      )
     );
   }
 
   Padding getBoldDisplay(leftText, rightText) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: Row(
         children: <Widget>[
           Align(
@@ -68,13 +76,13 @@ class StatsDisplay {
   // Stats display, but the right text is green
   Padding getMoneyDisplay(leftText, rightText) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: Row(
         children: <Widget>[
-          Align(
+          Expanded(flex: 1, child: Align(
             alignment: Alignment.centerLeft,
             child: Text(leftText, style: STATS_BODY_BOLD_STYLE),
-          ),
+          )),
           Align(
             alignment: Alignment.centerRight,
             child: Text(rightText, style: STATS_BODY_MONEY_STYLE),
@@ -87,13 +95,13 @@ class StatsDisplay {
   // Bolded stats display, but the right text is green
   Padding getBoldMoneyDisplay(leftText, rightText) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: Row(
         children: <Widget>[
-          Align(
+          Expanded(flex: 1, child:Align(
             alignment: Alignment.centerLeft,
             child: Text(leftText, style: STATS_BODY_BOLD_STYLE),
-          ),
+          )),
           Align(
             alignment: Alignment.centerRight,
             child: Text(rightText, style: STATS_BODY_MONEY_BOLD_STYLE),
@@ -109,21 +117,15 @@ class StatsDisplay {
 
   Padding getLevelTitle(titleText) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Text(titleText, style: STATS_SECTION_TITLE_STYLE)
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+        child: Align(alignment: Alignment.centerLeft, child: Text(titleText, style: STATS_LEVEL_DISPLAY_STYLE))
     );
   }
 
   Padding getLevelCounter(value) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Container(
-        child: LinearProgressIndicator(
-          minHeight: 50,
-          backgroundColor: PROGRESS_BAR_BACKGROUND_COLOR,
-          valueColor: AlwaysStoppedAnimation<Color>(BUTTON_COLOR),
-      ),
-    )
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+      child: LevelProgressBar(max: 100, current: 10),
     );
   }
 
@@ -140,12 +142,12 @@ class StatsDisplay {
     }
 
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
         child: Align(
-          alignment: Alignment.bottomCenter, child:  Container(
-            width: 100,
-            height: 25,
-            margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
+          alignment: Alignment.bottomRight, child:  Container(
+            width: 120,
+            height: 30,
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
             decoration:
             BoxDecoration(
                 color: currentColor,
@@ -166,8 +168,10 @@ class StatsDisplay {
 
   Padding getGoalsTitle() {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Text("#Goals", style: STATS_GOALS_TITLE_STYLE)
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+        child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text("#Goals", style: STATS_GOALS_TITLE_STYLE))
     );
   }
 
@@ -195,7 +199,7 @@ class StatsDisplay {
       );
 
       var tempGoalDisplay = Padding(
-        padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+        padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Row(
@@ -206,7 +210,7 @@ class StatsDisplay {
                   decoration:
                   BoxDecoration(
                       color: treeGreenEventColor,
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))
                   ),
                   child: goalNameDisplay
               ),

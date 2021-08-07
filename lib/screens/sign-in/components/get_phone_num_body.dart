@@ -78,6 +78,11 @@ class GetPhoneNumBody extends State<GetPhoneNumScreen> {
           widgetGen.getSubTitle("You can get an invite from any current user 📬"),
           SizedBox(height: 20,),
           phoneInput,
+          SizedBox(height: 20,),
+          Text("By signing up with your phone number you are"
+              " agreeing to the Terms of Service that can be found on "
+              "savvyapp.com/tos"
+          , style: mainBodyBoldStyle,),
           SizedBox(height: 60,),
           nextPageButton
         ]

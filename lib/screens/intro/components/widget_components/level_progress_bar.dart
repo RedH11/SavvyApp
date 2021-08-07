@@ -10,7 +10,7 @@ class LevelProgressBar extends StatelessWidget {
       {Key? key,
         required this.max,
         required this.current,
-        this.color = greenTextColor})
+        this.color = MONEY_TEXT_COLOR})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
