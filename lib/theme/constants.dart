@@ -43,6 +43,8 @@ const MONEY_TEXT_COLOR = Color.fromARGB(255, 87, 190, 130);
 const PROGRESS_BAR_BACKGROUND_COLOR = Color.fromARGB(255, 238, 238, 238);
 // Darker red
 const LOG_OUT_BUTTON_COLOR = Color.fromARGB(255, 206, 32, 32);
+// blue black
+const APP_BAR_ITEM_COLOR = Color.fromARGB(220, 56, 55, 74);
 
 /* FONT */
 const main_font = "Sofia Pro";
@@ -73,12 +75,18 @@ const STATS_BODY_MONEY_BOLD_STYLE = TextStyle(fontFamily: main_font, fontSize: 1
 const STATS_LEVEL_DISPLAY_STYLE = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.normal, fontStyle: FontStyle.italic, color: MONEY_TEXT_COLOR);
 const REDEEM_REWARDS_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white);
 const STATS_GOALS_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.bold, color: primaryTextColor);
-const LOG_OUT_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 18, fontWeight: FontWeight.bold, color: LOG_OUT_BUTTON_COLOR);
+const LOG_OUT_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.bold, color: LOG_OUT_BUTTON_COLOR);
 const EVENT_DESCRIPTION_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.normal, color: primaryTextColor);
 const EVENT_DESCRIPTION_EMOJI_STYLE = TextStyle(fontFamily: main_font, fontSize: 18, fontWeight: FontWeight.normal, color: primaryTextColor);
 const EVENT_DESCRIPTION_TIMER_STYLE = TextStyle(fontFamily: main_font, fontSize: 40, fontWeight: FontWeight.bold, color: primaryTextColor);
 const EVENT_DESCRIPTION_SPOTS_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.bold, color: secondaryTextColor);
 const EVENT_DESCRIPTION_COINS_STYLE = TextStyle(fontFamily: main_font, fontSize: 34, fontWeight: FontWeight.bold, color: primaryTextColor);
+const LOADING_TEXT_STYLE = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
+const INVITE_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontStyle: FontStyle.italic, fontWeight: FontWeight.normal, color: primaryTextColor);
+const INVITE_BODY_STYLE = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
+const INVITE_INPUT_STYLE = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
+const APP_BAR_TEXT_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.normal, color: primaryTextColor);
+
 
 /* SPACING */
 const double sidePadding = 20;

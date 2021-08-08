@@ -71,7 +71,7 @@ class PersonalStatsScreen extends StatelessWidget {
     ///
 
     return Scaffold(
-      appBar: TopAppBar().getAppBar("Your \$SavvyCoins"),
+      appBar: TopAppBar().getAppBar("Your \$SavvyCoins", false, true, context),
       body: Container(
         color: backgroundColor,
         child: Column(

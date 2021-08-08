@@ -16,7 +16,7 @@ class EventsInfoScreen extends StatelessWidget {
     var eventName = "🔥 Blitz Event #5";
 
     return Scaffold(
-      appBar: TopAppBar().getAppBar(eventName),
+      appBar: TopAppBar().getAppBar(eventName, false, true, context),
       body: EventsInfoBody(),
     );
   }
@@ -40,9 +40,6 @@ class EventsInfoBody extends StatelessWidget {
     var eventLockdownTime = "0 days";
     var earningsReceivedDate = "00/00/0000";
 
-    ///
-    /// Need to make the text format that you plug the pulled information into
-    ///
     var eventDescription = "$eventName #$eventNumber aims to $eventAim";
     var eventRecord = "";
 

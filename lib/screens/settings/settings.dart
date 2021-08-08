@@ -10,7 +10,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar().getAppBar("Settings"),
+      appBar: TopAppBar().getAppBar("Settings", false, true, context),
       body: SettingsState(),
     );
   }
@@ -93,7 +93,7 @@ class SettingsBody extends State<SettingsState> {
               ]
           ),
 
-          SizedBox(height: 50,),
+          SizedBox(height: 10,),
           settingsDisplay.getLogOutButton()
         ]
       )

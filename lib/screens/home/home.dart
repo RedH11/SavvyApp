@@ -1,3 +1,4 @@
+import 'package:cryptoapp/screens/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 //import 'package:cryptoapp/screens/home/components/menu.dart';
 import 'package:cryptoapp/screens/home/components/home_body.dart';
@@ -39,15 +40,7 @@ class HomeScreen extends StatelessWidget {
     );
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("Dashboard",
-            style: TextStyle(color: Colors.black, fontSize: 23)),
-        actions: [menuIcons],
-        backgroundColor: Colors.white,
-        toolbarHeight: 80,
-        titleSpacing: 30,
-        shadowColor: Colors.white, // can turn shadow on or off
-      ),
+      appBar: TopAppBar().getAppBar("Dashboard", true, false, context),
       body: HomeBody(),
     );
   }

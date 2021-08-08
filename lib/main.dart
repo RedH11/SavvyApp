@@ -1,6 +1,8 @@
 import 'package:cryptoapp/screens/events/events_info.dart';
+import 'package:cryptoapp/screens/events/events_loading.dart';
 import 'package:cryptoapp/screens/home/home.dart';
 import 'package:cryptoapp/screens/loading/loading.dart';
+import 'package:cryptoapp/screens/notifications/notifications.dart';
 import 'package:cryptoapp/screens/personal_stats/personal_stats.dart';
 import 'package:cryptoapp/screens/settings/settings.dart';
 import 'package:cryptoapp/screens/sign-in/get_phone_num.dart';
@@ -10,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 ///
@@ -55,12 +58,14 @@ class MyApp extends StatelessWidget {
             return Text('Something went wrong!');
           // Check if the user is logged in
           } else if (snapshot.hasData) {
-            return EventsInfoScreen();
-            //return IntroScreen();
+            return HomeScreen({});
           // Without wifi just show a circular progress indicator
           } else {
             return Center(
-              child: CircularProgressIndicator()
+              child: SpinKitThreeBounce(
+                  color: BUTTON_COLOR,
+                  size: 50.0
+              )
             );
           }
         },
