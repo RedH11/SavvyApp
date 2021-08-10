@@ -33,7 +33,7 @@ class EventDescrBody extends StatelessWidget {
               width: 310,
               decoration:
               BoxDecoration(
-                  color: blitzEventColor,
+                  color: BLITZ_EVENT_COLOR,
                   borderRadius: BorderRadius.all(Radius.circular(containerRoundness))
               ),
               // Event body text

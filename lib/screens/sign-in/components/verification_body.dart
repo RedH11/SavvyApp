@@ -32,6 +32,8 @@ class VerificationBody extends State<VerificationScreen> {
     ///
     /// IN THE FUTURE ADD A RESEND CODE BUTTON
     ///
+    /// MAKE IT LOAD WHILE YOU WAIT
+    ///
 
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;

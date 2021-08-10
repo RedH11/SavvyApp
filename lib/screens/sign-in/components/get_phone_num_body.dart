@@ -79,12 +79,14 @@ class GetPhoneNumBody extends State<GetPhoneNumScreen> {
           SizedBox(height: 20,),
           phoneInput,
           SizedBox(height: 20,),
-          Text("By signing up with your phone number you are"
-              " agreeing to the Terms of Service that can be found on "
-              "savvyapp.com/tos"
-          , style: mainBodyBoldStyle,),
           SizedBox(height: 60,),
-          nextPageButton
+          nextPageButton,
+          Padding(
+              padding: EdgeInsets.fromLTRB(40, 100, 40, 0),
+              child: Text("By signing up with your phone number you are"
+                  " agreeing to the Terms of Service that can be found on "
+                  "savvyapp.com/tos"
+                , style: mainBodyStyle, textAlign: TextAlign.center,))
         ]
       ),
     );

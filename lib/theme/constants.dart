@@ -24,13 +24,13 @@ const FADED_BUTTON_COLOR = Color.fromARGB(100, 86, 170, 104);
 // Light grey text-field bottom color
 const TEXT_FIELD_COLOR = Color.fromARGB(255, 195, 195, 195);
 // Light Red
-const blitzEventColor = Color.fromARGB(255, 253, 236, 236);
+const BLITZ_EVENT_COLOR = Color.fromARGB(255, 253, 236, 236);
 // Light blue
-const artEventColor = Color.fromARGB(255, 238, 242, 251);
+const ART_EVENT_COLOR = Color.fromARGB(255, 238, 242, 251);
 // Light Yellow
-const realestateEventColor = Color.fromARGB(255, 252, 253, 236);
+const REALESTATE_EVENT_COLOR = Color.fromARGB(255, 252, 253, 236);
 // Light Orange
-const mainstreamEventColor = Color.fromARGB(255, 253, 245, 236);
+const MAINSTREAM_EVENT_COLOR = Color.fromARGB(255, 253, 245, 236);
 // Light Green
 const treeGreenEventColor = Color.fromARGB(255, 236, 253, 237);
 // Light grey
@@ -86,7 +86,10 @@ const INVITE_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontSt
 const INVITE_BODY_STYLE = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
 const INVITE_INPUT_STYLE = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
 const APP_BAR_TEXT_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.normal, color: primaryTextColor);
-
+const HOME_USER_EVENT_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 18, fontWeight: FontWeight.normal, color: primaryTextColor);
+const HOME_USER_EVENT_DURATION_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const HOME_USER_EVENT_PERCENTAGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.bold, color: primaryTextColor);
+const HOME_TIMER_EMOJI_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
 
 /* SPACING */
 const double sidePadding = 20;
@@ -97,3 +100,28 @@ const double betweenContainers = 10;
 const buttonHeight = 60;
 const containerRoundness = 15.0;
 const buttonRoundness = 15.0;
+
+/* EVENT INFO MAPS */
+const Map<String, String> EVENT_ABBREVIATIONS = {
+  "Blitz" : "BLZ",
+  "Virtual Art" : "ART",
+  "Virtual Real Estate" : "RST",
+  "Mainstream" : "MST"
+};
+
+const Map <String, Color> EVENT_COLORS = {
+  "BLZ" : BLITZ_EVENT_COLOR,
+  "RST" : REALESTATE_EVENT_COLOR,
+  "MST" : MAINSTREAM_EVENT_COLOR,
+  "ART" : ART_EVENT_COLOR
+};
+
+const Map<String, String> EVENT_EMOJIS = {
+  "BLZ" : "🔥",
+  "RST" : "🏠",
+  "MST" : "🚀",
+  "ART" : "🌊"
+};
+
+/* EVENT SETTINGS */
+const EVENT_LIVE_TIME = 2; // How many days before the start time the event is opened

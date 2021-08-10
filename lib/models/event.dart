@@ -1,28 +1,33 @@
+import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
 
-class Event {
+class InvestingEvent {
+  ///
+  /// ADD THE INFO NEEDED FOR THE HOME DISPLAY
+  ///
   String eventID = "";
+
   String title = "";
-  String description = "";
-  String image = "";
+  String abbrv = "";
+  String number = "";
+  String aim = "";
   DateTime startTime = DateTime.now();
   DateTime endTime = DateTime.now();
   List<String> participants = [];
   int coinCount = 0;
+  // +0.00%
+  String changePercentage = "";
+
+  String getAbbrv(title) {
+    return EVENT_ABBREVIATIONS[title] ?? "ERROR";
+  }
+
+  InvestingEvent(title, number, aim, startTime, endTime) {
+    this.title = title;
+    this.abbrv = getAbbrv(title);
+    this.number = number;
+    this.aim = aim;
+    this.startTime = startTime;
+    this.endTime = endTime;
+  }
 }
-
-/*
-Also we need to keep a count of the # of events
-
-NEED TO WRITE THE ACTUAL DESCRIPTIONS
-!!!
-And deicde on the actual event types
- */
-
-
-Map eventDescriptions = {
-  "Blitz" : "Descr",
-  "Art" : "Descr",
-  "Real-Estate" : "Descr",
-  "Mainstream" : "Descr"
-};

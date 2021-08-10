@@ -28,6 +28,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    ///
+    /// Get the UTC offset
+    ///
+
     return MaterialApp(
       title: 'CryptoApp',
       theme: ThemeData(
