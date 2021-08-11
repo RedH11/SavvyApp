@@ -1,17 +1,23 @@
+import 'package:cryptoapp/screens/home/home.dart';
 import 'package:cryptoapp/screens/sign-in/get_phone_num.dart';
+import 'package:cryptoapp/screens/startup/authentication_service.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../username_entry.dart';
 import '../verification.dart';
 import 'UI_Widgets.dart';
 
 ///
-/// CANT HAVE IT CHECK THE CODE ON THE PINCODE TEXTFIELD BEING CHANGED
+/// Need some kind of buffer logic between the verification completion and the account to pull the info
+/// And if it doesn't exist to set default info for a new user
 ///
-/// ALSO NEED IT TO CHECK WHETHER OR NOT THERE IS AN ACCOUNT ASSOCIATED WITH THE PHONE NUMBER TO SKIP THE VERIFICATION
+///
+/// Also need to add some responsive UI to keep the user informed that the code
+/// was sent successfully (making it pause while the code is being sent) 
 ///
 
 class VerificationBody extends State<VerificationScreen> {
@@ -24,179 +30,59 @@ class VerificationBody extends State<VerificationScreen> {
   var resendCode = 0;
   var isLoading = true;
   var isVerified = false;
+  var userUID = "";
 
-  @override
-  Widget build(BuildContext context) {
-
-
-    ///
-    /// IN THE FUTURE ADD A RESEND CODE BUTTON
-    ///
-    /// MAKE IT LOAD WHILE YOU WAIT
-    ///
-
-    FirebaseAuth auth = FirebaseAuth.instance;
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-    auth.verifyPhoneNumber(
-      phoneNumber: userPhoneNumber,
-      verificationCompleted: (PhoneAuthCredential credential) {
-        // If verified successfully, sign in with the phone as the credential
-        auth.signInWithCredential(credential).then((user) async => {
-          if (user != null) {
-            // Logged in
-            await firestore.
-            collection('users').
-            doc(auth.currentUser!.uid).
-            set({
-              // DATA THAT IS PASSED INTO HOMEPAGE
-              ///
-              /// ???
-              ///
-            }).then((value) => {
-             setState(() {
-               isLoading = false;
-               isVerified = true;
-             })
-            }
-            )
-          }
-        });
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        debugPrint('Error logging in: ' + e.message!);
-        setState(() {
-          isLoading = false;
-        });
-      },
-      codeSent: (String verificationId, int? resendToken) {
-        // Firebase has sent the code and we store it for checking it is correct
-        setState(() {
-          isLoading = false;
-          verificationCode = verificationId;
-          resendCode = resendToken!;
-        });
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {
-        setState(() {
-          isLoading = false;
-          verificationCode = verificationId;
-        });
-      },
-      timeout: Duration(seconds: 60),
-    );
-
-    WidgetGenerator widgetGen = WidgetGenerator();
+  static const loadingScreen = Scaffold(
+      body: Center(
+          child: SpinKitThreeBounce(
+              color: BUTTON_COLOR,
+              size: 50.0
+          )
+      )
+  );
 
 
-    var resendButton = Padding(
+  Widget getResendButton() {
+
+    var authService = AuthenticationService();
+
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Align(
         alignment: Alignment.topCenter,
         child: TextButton(
           child: Text("Resend Code", style: FINAL_NEXT_PAGE_BUTTON_STYLE,),
           onPressed: () {
-            auth.verifyPhoneNumber(
-                phoneNumber: userPhoneNumber,
-                verificationCompleted: (PhoneAuthCredential credential) {
-                  // If verified successfully, sign in with the phone as the credential
-                  auth.signInWithCredential(credential).then((user) async => {
-                    if (user != null) {
-                      // Logged in
-                      await firestore.
-                      collection('users').
-                      doc(auth.currentUser!.uid).
-                      set({
-                        // DATA THAT IS PASSED INTO HOMEPAGE
-                        ///
-                        /// ???
-                        ///
-                      }).then((value) => {
-                        setState(() {
-                          isLoading = false;
-                          isVerified = true;
-                        })
-                      }
-                      )
-                    }
-                  });
-                },
-                verificationFailed: (FirebaseAuthException e) {
-                  debugPrint('Error logging in: ' + e.message!);
-                  setState(() {
-                    isLoading = false;
-                  });
-                },
-                codeSent: (String verificationId, int? resendToken) {
-                  // Firebase has sent the code and we store it for checking it is correct
-                  setState(() {
-                    isLoading = false;
-                    verificationCode = verificationId;
-                    resendCode = resendToken!;
-                  });
-                },
-                codeAutoRetrievalTimeout: (String verificationId) {
-                  setState(() {
-                    isLoading = false;
-                    verificationCode = verificationId;
-                  });
-                },
-                timeout: Duration(seconds: 60),
-                forceResendingToken: resendCode
-            );
+            authService.resendAuthCode(userPhoneNumber, resendCode);
           },
         ),
       ),
     );
+  }
 
-    var pinCodeController = TextEditingController();
+  Widget getPinCodeTextField() {
 
-    var pinCodeTextField = Padding(
+    TextEditingController pinCodeController = TextEditingController();
+
+    return Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
         child: Align(
             alignment: Alignment.topCenter,
             child: PinCodeTextField(
               keyboardType: TextInputType.number,
-              length: 5,
               controller: pinCodeController,
-              onChanged: (value) {
+              length: 5,
+              onChanged: (value) => {
                 setState(() async {
                   // If a full verification code has been entered
                   if (value.toString().length == 5) {
-                    AuthCredential credential = PhoneAuthProvider.credential(
+                    // Authenticate the inputted verification code
+                    PhoneAuthProvider.credential(
                         verificationId: verificationCode,
                         smsCode: value
                     );
-                    
-                    var result = await auth.signInWithCredential(credential);
-
-                    var user = result.user;
-
-                    if (user != null) {
-                      // Authentication successful, allow the use to continue
-                      verificationCodeEntered = true;
-                    } else {
-                      // Show the user a popup that the code was incorrect
-                      showDialog(context: context, builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Incorrect Code"),
-                          content: Text("Please re-enter the code or request a new one"),
-                          actions: [
-                            TextButton(
-                              child: Text("Ok"),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            )
-                          ],
-                        );
-                      });
-                      // Clear the pin-code box
-                      pinCodeController.clear();
-                    }
-
                   }
-                });
+                })
               },
               appContext: context,
               cursorColor: BUTTON_COLOR,
@@ -208,37 +94,64 @@ class VerificationBody extends State<VerificationScreen> {
             )
         )
     );
+  }
 
-    return Container(
-      color: Colors.white,
-      // 100$ of screen height
-      height: double.infinity,
-      // 100% of screen width
-      width: double.infinity,
+  Future<bool> _sendAuthCode() async {
+    var authService = AuthenticationService();
 
-      child: Column(
-          children: <Widget>[
-            Column(
-                children: <Widget>[
-                  widgetGen.getBackButton(context, ParentPhoneNumScreen()),
-                  SizedBox(height: 20,),
-                  widgetGen.getTitle("Enter the Confirmation Code"),
-                  SizedBox(height: 40,),
-                  ///
-                  /// Need to add firebase phone num verification
-                  ///
-                  pinCodeTextField,
-                  SizedBox(height:10),
-                  resendButton,
-                  SizedBox(height: 60,),
-                  widgetGen.getNextPageButton(context, ParentUsernameEntryScreen(), verificationCodeEntered)
-                ]
-            ),
-            ///
-            /// HAVE THE SIGN IN BUTTON BE GREY UNTIL TEXT IS PUT IN AND IN THE MIDDLE OF THE SCREEN
-            ///
-          ]
-      ),
+    var codeWasSent = await authService.loginWithPhone(userPhoneNumber);
+
+    return codeWasSent;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    // Use future builder here to change UI after the code is verified as sent
+    return FutureBuilder(
+        future: _sendAuthCode(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return loadingScreen;
+
+          } else if (snapshot.hasData) {
+
+            WidgetGenerator widgetGen = WidgetGenerator();
+
+            var pinCodeTextField = getPinCodeTextField();
+
+            var resendButton = getResendButton();
+
+            return Scaffold(
+                body: Container(
+              color: Colors.white,
+              // 100$ of screen height
+              height: double.infinity,
+              // 100% of screen width
+              width: double.infinity,
+
+              child: Column(
+                  children: <Widget>[
+                    Column(
+                        children: <Widget>[
+                          widgetGen.getBackButton(context, ParentPhoneNumScreen()),
+                          SizedBox(height: 20,),
+                          widgetGen.getTitle("Enter the Confirmation Code"),
+                          SizedBox(height: 40,),
+                          pinCodeTextField,
+                          SizedBox(height:10),
+                          resendButton,
+                          SizedBox(height: 60,),
+                          widgetGen.getNextPageButton(context, ParentUsernameEntryScreen(), verificationCodeEntered)
+                        ]
+                    ),
+                  ]
+              ),
+            ));
+          } else {
+            return loadingScreen;
+          }
+        }
     );
   }
 

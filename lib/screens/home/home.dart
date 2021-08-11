@@ -12,8 +12,8 @@ import 'package:http/http.dart';
 // Main home class
 class HomeScreen extends StatelessWidget {
 
-  final Map userData;
-  HomeScreen(this.userData);
+  final String userUID;
+  HomeScreen(this.userUID);
 
   Future<List<dynamic>> _getNetworkData() async {
 

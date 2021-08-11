@@ -6,6 +6,7 @@ import 'package:cryptoapp/screens/notifications/notifications.dart';
 import 'package:cryptoapp/screens/personal_stats/personal_stats.dart';
 import 'package:cryptoapp/screens/settings/settings.dart';
 import 'package:cryptoapp/screens/sign-in/get_phone_num.dart';
+import 'package:cryptoapp/screens/startup/startup.dart';
 import 'package:cryptoapp/screens/widgets/stats_display.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -62,9 +63,11 @@ class MyApp extends StatelessWidget {
             return Text('Something went wrong!');
           // Check if the user is logged in
           } else if (snapshot.hasData) {
-            return HomeScreen({});
+            print("Going to startup screen!");
+            return StartupScreen();
           // Without wifi just show a circular progress indicator
           } else {
+            print("Nothing Found, Show Loading");
             return Center(
               child: SpinKitThreeBounce(
                   color: BUTTON_COLOR,

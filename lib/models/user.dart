@@ -1,12 +1,25 @@
-import 'package:flutter/material.dart';
 
-/*
-WHEN WE INTEGRATE FIREBASE WE JUST HAVE TO MAKE SURE THE TRAFFIC IS END TO END ENCRYPTED
- */
-class User {
-  String uid = "";
-  String username = "";
-  String password = "";
-  int coinCount = 0;
-  Map<String, int> investments = {}; // {Event ID, Coin's Invested}
+
+class AppUser {
+  final String id;
+  final String fullName;
+  final String email;
+  final String userRole;
+
+  AppUser(this.id, this.fullName, this.email, this.userRole);
+
+  AppUser.fromData(Map<String, dynamic> data)
+      : id = data['id'],
+        fullName = data['fullName'],
+        email = data['email'],
+        userRole = data['userRole'];
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'fullName': fullName,
+      'email': email,
+      'userRole': userRole,
+    };
+  }
 }

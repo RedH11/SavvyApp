@@ -61,7 +61,7 @@ class UsernameEntryBody extends State<UsernameEntryScreen> {
     );
 
     // Next page button to go to the home screen with no information for a new user
-    var nextPageButton = widgetGen.getNextPageButton(context, HomeScreen({}), isUsernameEntered);
+    var nextPageButton = widgetGen.getNextPageButton(context, HomeScreen(""), isUsernameEntered);
 
     return Container(
       // white background
