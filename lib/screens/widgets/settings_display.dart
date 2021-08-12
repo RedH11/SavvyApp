@@ -1,7 +1,10 @@
+import 'package:cryptoapp/screens/intro/intro.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cryptoapp/theme/constants.dart';
 
 class SettingsDisplay {
 
@@ -64,12 +67,64 @@ class SettingsDisplay {
   }
 
 
-  void triggerLogOut() {
-    // Show dialogue to confirm it
-    // If yes, log out
+  Future<void> triggerLogOut(BuildContext context) async {
+
+    // set up the buttons
+      Widget cancelButton = ElevatedButton(
+        child: Text("Cancel", style: ALERT_CANCEL_BUTTON_STYLE,),
+        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+        onPressed:  () {
+          // Close the alert
+          Navigator.of(context).pop();
+        },
+      );
+
+      Widget logoutButton = ElevatedButton(
+        child: Text("Log Out", style: ALERT_LOGOUT_BUTTON_STYLE,),
+        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+        onPressed:  () async {
+          // Proceed with the sign out
+          FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+          await _firebaseAuth.signOut().then((void _) => {
+            // Successfully signed out, return to intro page
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => IntroScreen()))
+          }).catchError((error) => {
+            // An error happened.
+            print("Error logging out.")
+          });
+        },
+      );
+
+      var alertActions = Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            cancelButton,
+            SizedBox(width: 10),// button 1
+            logoutButton, // button 2
+          ]
+      ));
+
+      // set up the AlertDialog
+      AlertDialog alert = AlertDialog(
+        title: Text("Are You Sure You Want To Log-Out?"),
+        actions: [
+          alertActions
+        ],
+      );
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+
   }
 
-  Align getLogOutButton() {
+  Align getLogOutButton(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter, child:  Container(
       width: double.infinity,
@@ -82,7 +137,7 @@ class SettingsDisplay {
         ),
         child: new TextButton(
             onPressed: () => {
-              triggerLogOut()
+              triggerLogOut(context)
             },
             child: Text("Log Out", style: LOG_OUT_BUTTON_STYLE)
         )

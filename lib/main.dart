@@ -63,7 +63,6 @@ class MyApp extends StatelessWidget {
             return Text('Something went wrong!');
           // Check if the user is logged in
           } else if (snapshot.hasData) {
-            print("Going to startup screen!");
             return StartupScreen();
           // Without wifi just show a circular progress indicator
           } else {
@@ -77,7 +76,6 @@ class MyApp extends StatelessWidget {
           }
         },
       ),
-      //home: HomeScreen(),
     );
   }
 }

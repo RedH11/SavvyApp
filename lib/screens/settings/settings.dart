@@ -94,7 +94,7 @@ class SettingsBody extends State<SettingsState> {
           ),
 
           SizedBox(height: 10,),
-          settingsDisplay.getLogOutButton()
+          settingsDisplay.getLogOutButton(context)
         ]
       )
     );

@@ -90,6 +90,8 @@ const HOME_USER_EVENT_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 1
 const HOME_USER_EVENT_DURATION_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: secondaryTextColor);
 const HOME_USER_EVENT_PERCENTAGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.bold, color: primaryTextColor);
 const HOME_TIMER_EMOJI_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
+const ALERT_LOGOUT_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.bold, color: LOG_OUT_BUTTON_COLOR);
+const ALERT_CANCEL_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
 
 /* SPACING */
 const double sidePadding = 20;

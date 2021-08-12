@@ -10,6 +10,12 @@ class UsernameEntryBody extends State<UsernameEntryScreen> {
 
   bool isUsernameEntered = false;
 
+
+  ///
+  /// next step is to finish the functionality to get the user info set up with the username and the default values
+  /// for everything else
+  ///
+
   ///
   /// Need to add a username is taken text to pop up after submit
   ///
@@ -61,6 +67,9 @@ class UsernameEntryBody extends State<UsernameEntryScreen> {
     );
 
     // Next page button to go to the home screen with no information for a new user
+    ///
+    /// Verify the username is not already used and then send the user to the home page
+    ///
     var nextPageButton = widgetGen.getNextPageButton(context, HomeScreen(""), isUsernameEntered);
 
     return Container(
@@ -74,7 +83,7 @@ class UsernameEntryBody extends State<UsernameEntryScreen> {
       child: Column(
           children: <Widget>[
             SizedBox(height: 100,),
-            widgetGen.getTitle("Pick a username"),
+            widgetGen.getTitle("Let's setup your username!"),
             SizedBox(height: 20,),
             usernameInput,
             SizedBox(height: 60,),

@@ -12,6 +12,11 @@ class AuthenticationService {
   late AppUser _currentUser;
   AppUser get currentUser => _currentUser;
 
+  Future<bool> getTestUser() async {
+    _firebaseAuth.signInAnonymously();
+    return true;
+  }
+
   Future loginWithPhone(String phoneNumber) async {
 
     var codeWasSent = false;
@@ -78,7 +83,7 @@ class AuthenticationService {
     PhoneCodeSent codeSent = (String verificationId, int? resendToken) {
       print('Please check your phone for the verification code.');
       _verificationID = verificationId;
-      codeSend = true;
+      codeWasSent = true;
     };
 
     PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
@@ -96,6 +101,8 @@ class AuthenticationService {
         timeout: Duration(seconds: 60),
         forceResendingToken: resendCode
     );
+
+    print("Code was sent is " + codeWasSent.toString());
 
     return codeWasSent;
 

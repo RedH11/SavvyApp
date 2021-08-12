@@ -1,5 +1,6 @@
 import 'package:cryptoapp/screens/home/home.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
+import 'package:cryptoapp/screens/settings/settings.dart';
 import 'package:cryptoapp/screens/startup/authentication_service.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,7 +33,7 @@ class StartupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Future.delayed(const Duration(seconds: 10), () async {
+    Future.delayed(const Duration(seconds: 0), () async {
       var userInfo = await _getUserInformation();
 
         bool userLoggedIn = userInfo[0];
@@ -48,7 +49,7 @@ class StartupScreen extends StatelessWidget {
           //print("User is NOT logged in, sending them to the intro screen...");
           // User is NOT logged in, go to login screen
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => IntroScreen()));
+              MaterialPageRoute(builder: (context) => SettingsScreen()));
         }
     });
 
