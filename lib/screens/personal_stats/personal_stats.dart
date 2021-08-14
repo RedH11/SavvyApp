@@ -66,12 +66,13 @@ class PersonalStatsScreen extends StatelessWidget {
       ]
     );
 
-    ///
-    /// NEED TO MAKE IT SO THE GOALS ARE PROPERTY SET UP IN THE OTHER FILE
-    ///
+    // App bar variables
+    bool hasNotification = false;
+    bool useMenuIcons = false;
+    bool useBackButton = true;
 
     return Scaffold(
-      appBar: TopAppBar().getAppBar("Your \$SavvyCoins", false, true, context),
+      appBar: TopAppBar().getAppBar("Your \$SavvyCoins", useMenuIcons, useBackButton, hasNotification, context),
       body: Container(
         color: backgroundColor,
         child: Column(

@@ -9,8 +9,14 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // App bar variables
+    bool hasNotification = false;
+    bool useMenuIcons = false;
+    bool useBackButton = true;
+
     return Scaffold(
-      appBar: TopAppBar().getAppBar("Settings", false, true, context),
+      appBar: TopAppBar().getAppBar("Settings", useMenuIcons, useBackButton, hasNotification, context),
       body: SettingsState(),
     );
   }

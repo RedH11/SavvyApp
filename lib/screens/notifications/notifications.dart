@@ -19,8 +19,13 @@ class NotificationsScreen extends StatelessWidget {
     var notificationsDisplay = NotificationsDisplay();
     var notifBody = notificationsDisplay.getNotifications(invAmount);
 
+    // App bar variables
+    bool hasNotification = false;
+    bool useMenuIcons = false;
+    bool useBackButton = true;
+
     return Scaffold(
-      appBar: TopAppBar().getAppBar("Activity", false, true, context),
+      appBar: TopAppBar().getAppBar("Activity", useMenuIcons, useBackButton, hasNotification, context),
       body: Container(
         color: backgroundColor,
         child: Column(children: <Widget>[notifBody],)

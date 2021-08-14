@@ -1,4 +1,5 @@
 import 'package:cryptoapp/screens/home/home.dart';
+import 'package:cryptoapp/screens/sign-in/username_entry.dart';
 import 'package:cryptoapp/screens/startup/authentication_service.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,8 +8,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class InitUserScreen extends StatelessWidget {
 
-  final String username;
-  InitUserScreen(this.username);
+  final String username, phoneNum;
+  InitUserScreen(this.username, this.phoneNum);
 
   final loadingScreen = Scaffold(
       body: Center(
@@ -19,24 +20,24 @@ class InitUserScreen extends StatelessWidget {
       )
   );
 
-  void initializeUser(String username, BuildContext context) async {
+  void initializeUser(String username, String phoneNumber, BuildContext context) async {
     AuthenticationService authService = AuthenticationService();
     bool usernameIsTaken = await authService.usernameIsTaken(username);
     String userUID = await authService.getUserUID();
     print(" IN INIT USER IT IS SHOWN AS $usernameIsTaken for user is taken");
     if (!usernameIsTaken) {
       // Go to the home page
-      await authService.initializeUser(username);
+      await authService.initializeUser(username, phoneNumber);
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => HomeScreen(userUID)));
     } else {
       // Go back to the username entry page
-      _showErrorDialog("Username Taken", "Please enter another username", context);
+      _showErrorDialog("Username Taken", "Please enter another username", phoneNumber, context);
     }
   }
 
     // user defined function
-    void _showErrorDialog(String title, String content, BuildContext parentContext) {
+    void _showErrorDialog(String title, String content, String phoneNumber, BuildContext parentContext) {
       // flutter defined function
       showDialog(
         context: parentContext,
@@ -52,8 +53,9 @@ class InitUserScreen extends StatelessWidget {
                 onPressed: () {
                   // Close the dialog
                   Navigator.of(context).pop();
-                  // Return to the previous screen
-                  Navigator.pop(parentContext);
+                  // Return to the username entry screen
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ParentUsernameEntryScreen(phoneNumber)));
                 },
               ),
             ],
@@ -66,7 +68,7 @@ class InitUserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Future.delayed(Duration(seconds: 1), () async => {
-      initializeUser(username, context)
+      initializeUser(username, phoneNum, context)
     });
 
     // Load while the info is retrieved and processed

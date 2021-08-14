@@ -1,7 +1,9 @@
 - To get the event pulls set up from the firestore
 - To set up UI for empty all events / user events (keep it simple)
 - To set up the initial page where users are dropped
--
+- To make it so that if there is already a phone number with an account, that the user can log into that account
+- Allow the user to set up metamask and read from their public address
+- Shorten all of the intro pages massively
 
 Non-Urgent:
 Restyle show dialogues (like in init user, etc.)

@@ -12,7 +12,48 @@ import 'package:flutter/rendering.dart';
 ///
 class TopAppBar {
 
-  AppBar getAppBar(titleText, useMenuIcons, useBackButton, context) {
+  AppBar getAppBar(titleText, useMenuIcons, useBackButton, hasNotification, context) {
+
+    Widget notificationIcon;
+    Widget notificationButton = IconButton(
+        onPressed: () => {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationsScreen()))
+        },
+        icon: Icon(
+          Icons.notifications_outlined,
+          color: APP_BAR_ITEM_COLOR,
+          size: 22,
+        ));
+
+    if (hasNotification) {
+      notificationIcon = Stack(
+        children: <Widget>[
+          notificationButton,
+          new Positioned(
+            right: 0,
+            child: new Container(
+              padding: EdgeInsets.all(1),
+              decoration: new BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              constraints: BoxConstraints(
+                minWidth: 12,
+                minHeight: 12,
+              ),
+
+              // If I wanted to add a counter I would change the text here
+              child: new Text(
+                '',
+                style: new TextStyle(
+                  color: Colors.white,
+                  fontSize: 8,
+                ),
+                textAlign: TextAlign.center,
+              ),),)],);
+    } else {
+      notificationIcon = notificationButton;
+    }
 
     Widget menuIcons = Container(
       child: Row(
@@ -27,15 +68,8 @@ class TopAppBar {
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(containerRoundness))
                   ),
-                  child: IconButton(
-                    onPressed: () => {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationsScreen()))
-                    },
-                    icon: Icon(
-                      Icons.notifications_outlined,
-                      color: APP_BAR_ITEM_COLOR,
-                      size: 22,
-                  )))),
+                  child: notificationIcon
+              )),
           Padding(
               padding:
               EdgeInsets.fromLTRB(5, 0, 20, 5),

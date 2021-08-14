@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:cryptoapp/models/user.dart';
-import 'firestore_service.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -120,13 +118,15 @@ class AuthenticationService {
     return documents.length != 0;
   }
 
-  Future<void> initializeUser(String username) async {
+  Future<void> initializeUser(String username, String phoneNumber) async {
 
     await _firestoreService.collection("users").add({
       // Core info
       "username" : username,
+      "phoneNumber" : phoneNumber,
+      "notifications_enabled" : true,
       "balance" : 0.00,
-      "invites_available" : 0,
+      "invites_available" : 1, // all users start with one invite
       "current_events" : [], // array of event ids
 
       // Goal-related info

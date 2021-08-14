@@ -15,8 +15,12 @@ class EventsInfoScreen extends StatelessWidget {
     // Get Event Name and Emoji
     var eventName = "🔥 Blitz Event #5";
 
+    bool hasNotification = false;
+    bool useMenuIcons = false;
+    bool useBackButton = true;
+
     return Scaffold(
-      appBar: TopAppBar().getAppBar(eventName, false, true, context),
+      appBar: TopAppBar().getAppBar(eventName, useMenuIcons, useBackButton, hasNotification, context),
       body: EventsInfoBody(),
     );
   }

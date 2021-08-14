@@ -174,7 +174,7 @@ class VerificationBody extends State<VerificationScreen> {
                           if (pinCode == "12345") {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) =>
-                                    ParentUsernameEntryScreen()));
+                                    ParentUsernameEntryScreen(userPhoneNumber)));
                           } else {
                             _showDialog("Incorrect Code", "Please enter the code again or request a new code");
 

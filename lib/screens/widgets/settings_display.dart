@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -60,10 +61,12 @@ class SettingsDisplay {
     );
   }
 
-  void setNotifications(bool paused) {
-    ///
-    /// In firebase user info, toggle the user notifications
-    ///
+  void setNotifications(bool paused) async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    var userUID = _auth.currentUser?.uid ?? "";
+    FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+    _firestore.collection('users').doc(userUID).set({'notifications_enabled' : !paused});
   }
 
 

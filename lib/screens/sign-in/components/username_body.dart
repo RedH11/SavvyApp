@@ -10,6 +10,9 @@ import 'UI_Widgets.dart';
 
 class UsernameEntryBody extends State<UsernameEntryScreen> {
 
+  final String phoneNumber;
+  UsernameEntryBody(this.phoneNumber);
+
   bool _enabled = false;
   String username = "";
 
@@ -79,7 +82,7 @@ class UsernameEntryBody extends State<UsernameEntryScreen> {
             onPressed: () => {
             if (_enabled) {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => InitUserScreen(username)))
+                  MaterialPageRoute(builder: (context) => InitUserScreen(username, phoneNumber)))
             }
         },
             child: Text("Next", style: FINAL_NEXT_PAGE_BUTTON_STYLE)
