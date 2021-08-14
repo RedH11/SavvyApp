@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cryptoapp/screens/startup/authentication_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +91,6 @@ class WidgetGenerator {
           child: new TextButton(
               onPressed: () {
                 if (isEnabled) {
-                  // Go to next page
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => nextScreen));
                 } else {

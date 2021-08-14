@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:cryptoapp/models/user.dart';
@@ -5,7 +6,7 @@ import 'firestore_service.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final FirestoreService _firestoreService = FirestoreService();
+  final FirebaseFirestore _firestoreService = FirebaseFirestore.instance;
 
   var _verificationID;
 
@@ -108,48 +109,41 @@ class AuthenticationService {
 
   }
 
-  ///
-  /// HAVE TO MAKE IT WITH THE PHONE NUMBER
-  ///
-  /*Future signUpWithEmail({
-    required String email,
-    required String password,
-    required String fullName,
-    required String role,
-  }) async {
-    try {
-      var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+  Future<bool> usernameIsTaken(String username) async {
+    final result = await _firestoreService.collection("users").where('username', isEqualTo: username).get();
+    //converts results to a list of documents
+    final List<DocumentSnapshot> documents =
+        result.docs;
 
-      // create a new user profile on firestore
-      _currentUser = AppUser(
-        authResult.user.uid, email,
-        fullName,
-        role,
-      );
+    print("For username $username, there are ${documents.length} other ppl with it");
 
-      await _firestoreService.createUser(_currentUser);
-
-      return authResult.user != null;
-    } catch (e) {
-      return e.message;
-    }
+    return documents.length != 0;
   }
 
-  Future _populateCurrentUser(FirebaseUser user) async {
-    if (user != null) {
-      _currentUser = await _firestoreService.getUser(user.uid);
-    }
+  Future<void> initializeUser(String username) async {
+
+    await _firestoreService.collection("users").add({
+      // Core info
+      "username" : username,
+      "balance" : 0.00,
+      "invites_available" : 0,
+      "current_events" : [], // array of event ids
+
+      // Goal-related info
+      "events_joined" : 0,
+      "invites_sent" : 0,
+
+    }).catchError((error) => {
+      print("Error getting user in authentication_service, $error")
+    });
   }
-  */
 
   Future<bool> isUserLoggedIn() async {
     return (await _firebaseAuth.currentUser != null);
   }
 
   Future<String> getUserUID() async {
-    return (await _firebaseAuth.currentUser!.uid);
+    String userUID = await _firebaseAuth.currentUser?.uid ?? "";
+    return userUID;
   }
 }

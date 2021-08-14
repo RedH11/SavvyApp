@@ -1,3 +1,11 @@
+- To get the event pulls set up from the firestore
+- To set up UI for empty all events / user events (keep it simple)
+- To set up the initial page where users are dropped
+-
+
+Non-Urgent:
+Restyle show dialogues (like in init user, etc.)
+
 tasks:
 - make UI (medium)
 - make business logic (hard)

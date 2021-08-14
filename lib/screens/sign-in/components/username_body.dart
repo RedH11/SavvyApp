@@ -1,4 +1,6 @@
 import 'package:cryptoapp/screens/home/home.dart';
+import 'package:cryptoapp/screens/sign-in/init_user.dart';
+import 'package:cryptoapp/screens/startup/authentication_service.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,17 +10,8 @@ import 'UI_Widgets.dart';
 
 class UsernameEntryBody extends State<UsernameEntryScreen> {
 
-  bool isUsernameEntered = false;
-
-
-  ///
-  /// next step is to finish the functionality to get the user info set up with the username and the default values
-  /// for everything else
-  ///
-
-  ///
-  /// Need to add a username is taken text to pop up after submit
-  ///
+  bool _enabled = false;
+  String username = "";
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +47,8 @@ class UsernameEntryBody extends State<UsernameEntryScreen> {
                           ),
                         onChanged: (value) => {
                           setState(() {
-                            isUsernameEntered = value.length > 0;
+                            _enabled = value.length > 0;
+                            username = value;
                           })
                         },
                       ),
@@ -66,11 +60,32 @@ class UsernameEntryBody extends State<UsernameEntryScreen> {
       )
     );
 
-    // Next page button to go to the home screen with no information for a new user
-    ///
-    /// Verify the username is not already used and then send the user to the home page
-    ///
-    var nextPageButton = widgetGen.getNextPageButton(context, HomeScreen(""), isUsernameEntered);
+    var currentColor = _enabled ? BUTTON_COLOR : FADED_BUTTON_COLOR;
+
+    var nextPageButton = Align(
+      alignment: Alignment.bottomCenter, child:  SizedBox(
+        width: 280,
+        height: 50,
+        child: ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(currentColor),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      side: BorderSide(color: Colors.transparent)
+                  )
+              ),
+          ),
+            onPressed: () => {
+            if (_enabled) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => InitUserScreen(username)))
+            }
+        },
+            child: Text("Next", style: FINAL_NEXT_PAGE_BUTTON_STYLE)
+        )
+    ),
+    );
 
     return Container(
       // white background

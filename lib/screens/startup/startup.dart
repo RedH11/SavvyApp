@@ -44,12 +44,12 @@ class StartupScreen extends StatelessWidget {
           // User is logged in, load their data
           Navigator.push(context,
               MaterialPageRoute(
-                  builder: (context) => HomeScreen(userUID)));
+                  builder: (context) => IntroScreen()));
         } else {
           //print("User is NOT logged in, sending them to the intro screen...");
           // User is NOT logged in, go to login screen
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SettingsScreen()));
+              MaterialPageRoute(builder: (context) => IntroScreen()));
         }
     });
 

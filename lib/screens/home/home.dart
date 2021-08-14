@@ -25,8 +25,9 @@ class HomeScreen extends StatelessWidget {
     final String currentTimeZone = await FlutterNativeTimezone.getLocalTimezone();
     Response response = await get(Uri.parse('http://worldtimeapi.org/api/timezone/$currentTimeZone'));
     Map data = jsonDecode(response.body);
+    var utcOffset = data['utc_offset'].toString().substring(0, 3);
 
-    return [data['utc_offset'], "second piece of text"];
+    return [utcOffset, "second piece of text"];
   }
 
   @override
@@ -50,6 +51,7 @@ class HomeScreen extends StatelessWidget {
       future: _getNetworkData(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
+          print("THERE WAS AN ERROR!");
           return Scaffold(
               body: Center(
                   child: SpinKitThreeBounce(
@@ -60,7 +62,7 @@ class HomeScreen extends StatelessWidget {
           );
         } else if (snapshot.hasData) {
           return Scaffold(
-            body: Padding(padding: EdgeInsets.symmetric(vertical: 100), child:Text(snapshot.data!.elementAt(1))),
+            body: Padding(padding: EdgeInsets.symmetric(vertical: 100), child:Text(userUID)),
           );
           /*return Scaffold(
             backgroundColor: Colors.white,
