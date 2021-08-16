@@ -1,15 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cryptoapp/models/user.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestoreService = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   var _verificationID;
-
-  late AppUser _currentUser;
-  AppUser get currentUser => _currentUser;
 
   Future<bool> getTestUser() async {
     _firebaseAuth.signInAnonymously();
@@ -101,27 +97,25 @@ class AuthenticationService {
         forceResendingToken: resendCode
     );
 
-    print("Code was sent is " + codeWasSent.toString());
-
     return codeWasSent;
 
   }
 
   Future<bool> usernameIsTaken(String username) async {
-    final result = await _firestoreService.collection("users").where('username', isEqualTo: username).get();
+
+    final result = await _firestore.collection("users").where('username', isEqualTo: username).get();
     //converts results to a list of documents
     final List<DocumentSnapshot> documents =
         result.docs;
 
-    print("For username $username, there are ${documents.length} other ppl with it");
-
     return documents.length != 0;
   }
 
-  Future<void> initializeUser(String username, String phoneNumber) async {
+  Future<void> initializeUser(String userUID, String username, String phoneNumber) async {
 
-    await _firestoreService.collection("users").add({
+    await _firestore.collection("users").add({
       // Core info
+      "uid" : userUID,
       "username" : username,
       "phoneNumber" : phoneNumber,
       "notifications_enabled" : true,
@@ -136,6 +130,7 @@ class AuthenticationService {
     }).catchError((error) => {
       print("Error getting user in authentication_service, $error")
     });
+
   }
 
   Future<bool> isUserLoggedIn() async {

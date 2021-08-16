@@ -1,10 +1,15 @@
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoapp/screens/home/home.dart';
 import 'package:cryptoapp/screens/sign-in/username_entry.dart';
 import 'package:cryptoapp/screens/startup/authentication_service.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:http/http.dart';
 
 class InitUserScreen extends StatelessWidget {
 
@@ -20,14 +25,49 @@ class InitUserScreen extends StatelessWidget {
       )
   );
 
+  /// Retrieve the info for all events and about the user (balance, etc.)
+  ///
+  /// Returns...
+  /// String utcOffset:         the hours offset (+/-) from utc for the user's location
+  /// String balance:           the current balance of the user associated with the app
+  /// int invitesAvailable:     how many invites the user has to send
+  /// List<String> userEvents:  a list of the UIDs for events the user is currently participating in
+  /// Map<> allEvents:          a dictionary containing the information for all current events
+
+  Future<List> getInfoForHome(String userUID) async {
+
+      // Initialize the instance of the firestore database
+      FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+      // Get all the event information
+      var allEvents = await _firestore.collection('events').get();
+
+      var userInfo = await _firestore.collection('users')
+          .where('uid', isEqualTo: userUID)
+          .get();
+
+      double balance = 0.0;
+      int invitesAvailable = 0;
+      List userEvents = [""];
+
+      // Get the user time zone offset
+      final String currentTimeZone = await FlutterNativeTimezone.getLocalTimezone();
+      Response response = await get(Uri.parse('http://worldtimeapi.org/api/timezone/$currentTimeZone'));
+      Map data = jsonDecode(response.body);
+      // Gets the substring of the hours section to convert to int later
+      var utcOffset = int.parse(data['utc_offset'].toString().substring(0, 3));
+
+      return [utcOffset, balance, invitesAvailable, userEvents, allEvents];
+  }
+
   void initializeUser(String username, String phoneNumber, BuildContext context) async {
     AuthenticationService authService = AuthenticationService();
     bool usernameIsTaken = await authService.usernameIsTaken(username);
     String userUID = await authService.getUserUID();
-    print(" IN INIT USER IT IS SHOWN AS $usernameIsTaken for user is taken");
+
     if (!usernameIsTaken) {
-      // Go to the home page
-      await authService.initializeUser(username, phoneNumber);
+      // Go to the home page after initializing the starting info of the user
+      await authService.initializeUser(userUID, username, phoneNumber);
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => HomeScreen(userUID)));
     } else {

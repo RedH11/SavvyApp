@@ -1,42 +1,14 @@
+- Resolve the home page error after verification
+- See if the notification red circle is working
+
 - To get the event pulls set up from the firestore
 - To set up UI for empty all events / user events (keep it simple)
 - To set up the initial page where users are dropped
 - To make it so that if there is already a phone number with an account, that the user can log into that account
 - Allow the user to set up metamask and read from their public address
 - Shorten all of the intro pages massively
+- Also use the flutter native splash screen to add a splash screen
+- Finish the event joined screen and the join event 
 
 Non-Urgent:
 Restyle show dialogues (like in init user, etc.)
-
-tasks:
-- make UI (medium)
-- make business logic (hard)
-    - setting up user profiles and data
-    - crypto and money logic
-- setup transactions (medium)
-    - done through an api
-- setup firebase (easy)
-- testing app (hard)
-- testing firebase (hard)
-    -testing servers
-
-
-SCREEN ASSIGNMENT (w/ Estimated Difficulty):
-
-Intro - 2 (COMPLETED!!!)
-Login / Sign up - 7
-Home - 8
-Settings - 5
-Invites - 4
-Event - Joining Event - Event Joined - 8
-Deposit - 7
-Statistics - 5
-
-HUNTER:
-Intro, Login / Sign up, Event - Joining Event - Event Joined, Deposit
-
-KABIR:
-Settings, Invites, Home, Statistics
-
-
-Also use the flutter native splash screen to add a splash screen
