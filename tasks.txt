@@ -1,5 +1,13 @@
 
-  - In all events make it so that the spots actually show the real one
+
+  - On my phone it overflows in the intro: definitely need to make everything flexible:
+    https://www.youtube.com/watch?v=z7P1OFLw4kY&ab_channel=FilledStacks
+
+  - In the phone verification part, for when I submit it, add a text that says enter 12345 to continue in the app
+
+  FOR ALL EVENTS:
+  - BUT still need to test UI when there are no events
+  - AND need to test if it doesn't show events when they are ongoing
 
   - Add the resend code button (not visible?)
 
