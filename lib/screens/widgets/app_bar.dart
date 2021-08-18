@@ -30,27 +30,18 @@ class TopAppBar {
         children: <Widget>[
           notificationButton,
           new Positioned(
-            right: 0,
+            right: 11,
+            top: 10,
+            //bottom: 10,
             child: new Container(
+              width: 8,
+              height: 8,
               padding: EdgeInsets.all(1),
               decoration: new BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(6),
               ),
-              constraints: BoxConstraints(
-                minWidth: 12,
-                minHeight: 12,
-              ),
-
-              // If I wanted to add a counter I would change the text here
-              child: new Text(
-                '',
-                style: new TextStyle(
-                  color: Colors.white,
-                  fontSize: 8,
-                ),
-                textAlign: TextAlign.center,
-              ),),)],);
+            ),)],);
     } else {
       notificationIcon = notificationButton;
     }

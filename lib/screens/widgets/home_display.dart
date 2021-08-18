@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoapp/theme/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
+import 'package:intl/intl.dart';
 
 class HomeDisplay {
-
 
   String getEventEmoji(eventAbbrv) {
     return EVENT_EMOJIS[eventAbbrv] ?? "🚀";
@@ -70,50 +72,95 @@ class HomeDisplay {
     }
   }
 
-  Widget getNewEventContainer(curEvent, utcOffset) {
+  Widget getNewEventContainer(Map<String, dynamic> curEvent, utcOffset) {
 
-    ///
-    /// Make sure that when the navigation to the event info page occurs
-    /// That you don't send it on if the event is unjoinable
-    ///
+    String eventAbbrv = curEvent['abbrv'];
+    Color curColor = getEventColor(eventAbbrv);
+    String curEmoji = getEventEmoji(eventAbbrv);
 
-    Color curColor = getEventColor(curEvent.abbrv);
-    String curEmoji = getEventEmoji(curEvent.abbrv);
-    String eventAbbrv = curEvent.abbrv;
-    // Checks if the event is open to be joined
-    bool eventIsLive = (DateTime
-        .now()
-        .difference(curEvent.startTime)
-        .inDays <= EVENT_LIVE_TIME);
+    DateTime eventStartTime = (curEvent['startTime'] as Timestamp).toDate();
 
-    var eventTimeLeftToStart = -1 * DateTime
-        .now()
-        .difference(curEvent.startTime)
-        .inSeconds;
+    var eventTimeLeftToStart = -1 * DateTime.now().difference(eventStartTime).inSeconds;
 
     String curTimerEmoji = "⏳";
+    String spotsOpen = "";
 
-    if (eventIsLive) {
+
+    // Checks if the event is open to be joined (starts in less than the non-live time)
+    bool eventIsJoinable = ((DateTime.now().difference(eventStartTime).inDays).abs() <= EVENT_LIVE_TIME);
+
+    Widget eventTimer;
+
+    if (eventIsJoinable) {
       curTimerEmoji = getTimerEmoji(eventTimeLeftToStart);
+      var numSpotsOpen = curEvent['open_spots'];
+      spotsOpen = "$numSpotsOpen Spots Open";
+
+      var countdownEndTime = eventStartTime.millisecondsSinceEpoch + 1000 * 30;
+
+      eventTimer = CountdownTimer(
+        endTime: countdownEndTime,
+        widgetBuilder: (BuildContext ctx, CurrentRemainingTime? time) {
+          if (time == null) {
+            return Text('Event Started!');
+          }
+
+          // Convert the days left into hours left
+          int daysLeftInHours = (time.days ?? 0) * 24;
+          int hoursLeft = (time.hours ?? 0) + daysLeftInHours;
+
+          // Make the hours always display double digits
+          String hoursInTimer;
+
+          if (hoursLeft < 10) {
+            hoursInTimer = "0$hoursLeft";
+          } else {
+            hoursInTimer = hoursLeft.toString();
+          }
+
+          // Make the minutes always display double digits
+          String minutesInTimer;
+
+          if ((time.min ?? 0) < 10) {
+            minutesInTimer = "0${time.min}";
+          } else {
+            minutesInTimer = time.min.toString();
+          }
+
+          // Make the seconds always display double digits
+          String secondsInTimer;
+
+          if ((time.sec ?? 0) < 10) {
+            secondsInTimer = "0${time.sec}";
+          } else {
+            secondsInTimer = time.sec.toString();
+          }
+
+          return Text(
+              '$hoursInTimer:$minutesInTimer:$secondsInTimer TO JOIN', style: eventTimerStyle);
+        },
+      );
+    } else {
+      // If the event isn't live, show the date when it will be
+      String formattedDate = DateFormat('MM/dd, ha').format(eventStartTime).toLowerCase();
+      String eventStartString = "🚀 $formattedDate";
+      eventTimer = Text(eventStartString, style: eventTimerStyle,);
+
+      spotsOpen = "Starting Soon";
     }
 
     curTimerEmoji = getTimerEmoji(eventTimeLeftToStart);
-
-    CountdownTimer eventTimer = CountdownTimer(
-      endTime: DateTime.now().millisecondsSinceEpoch + 1000 * eventTimeLeftToStart,
-      textStyle: eventTimerStyle,
-    );
 
     return Row(
         children: <Widget>[
           // Padding to separate it from the white container
           Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child:
               // Event Body
               Container(
-                height: 80,
-                width: 300,
+                height: 60,
+                width: 260,
                 decoration:
                 BoxDecoration(
                     color: curColor,
@@ -127,19 +174,20 @@ class HomeDisplay {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(curEmoji, style: TextStyle(fontSize: 30)),
-                    SizedBox(width: 20),
+                    Text(curEmoji, style: TextStyle(fontSize: 22)),
+                    SizedBox(width: 10),
+                    // Column with title and # of spots open
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(eventAbbrv, style: eventTitleStyle),
-                        SizedBox(height: 5),
-                        Text("2 Spots Open", style: eventSubtitleStyle),
+                        SizedBox(height: 3),
+                        Text(spotsOpen, style: eventSubtitleStyle),
                       ],
                     ),
-                    SizedBox(width: 40,),
-                    eventTimer
+                    SizedBox(width: 20,),
+                    Expanded(flex: 2, child: Align(alignment: Alignment.centerRight, child: eventTimer))
                   ],
                 ),
                 )
@@ -163,27 +211,40 @@ class HomeDisplay {
 
     return Container(
       margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: allUserEvents,
-      ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: 100, minHeight: 0.0),
+        child: ListView(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          children: allUserEvents,
+        ),
+      )
     );
   }
 
-  Widget getAllEventsDisplay(allEvents, utcOffset) {
-    List<Widget> allEventContainers = [];
-    var event;
+  Widget getAllEventsDisplay(QuerySnapshot allEvents, utcOffset) {
 
-    for (event in allEvents) {
-      allEventContainers.add(getNewEventContainer(event, utcOffset));
+    List<Widget> allEventContainers = [];
+
+    for (QueryDocumentSnapshot event in allEvents.docs) {
+       Map<String, dynamic>? eventData = event.data() as Map<String, dynamic>?;
+
+       DateTime eventStartTime = (eventData?['startTime'] as Timestamp).toDate();
+       var timeToStart = DateTime.now().difference(eventStartTime).inSeconds;
+
+       // If the event hasn't already started, (the difference is negative)
+       if (timeToStart < 0) {
+         allEventContainers.add(getNewEventContainer(eventData!, utcOffset));
+       }
     }
 
     return Container(
       margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-      child: SizedBox(
-          height: 200.0,
+      child: ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: 500, minHeight: 0.0),
           child: ListView(
-        scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
         children: allEventContainers,
       )),
     );

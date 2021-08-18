@@ -23,7 +23,8 @@ class StartupScreen extends StatelessWidget {
 
     // If the user is logged in, return that they are and their UID
     if (await authService.isUserLoggedIn()) {
-      return [true, authService.getUserUID()];
+      String userUID = await authService.getUserUID();
+      return [true, userUID];
       // If the user is not logged in, process their phone verification
     } else {
       return [false, ""];
@@ -40,13 +41,13 @@ class StartupScreen extends StatelessWidget {
         String userUID = userInfo[1].toString();
 
         if (userLoggedIn == true) {
-          //print("User is logged in, sending them to the home screen...");
+          print("User is logged in, sending them to the home screen...");
           // User is logged in, load their data
           Navigator.push(context,
               MaterialPageRoute(
-                  builder: (context) => SettingsScreen()));
+                  builder: (context) => HomeScreen(userUID)));
         } else {
-          //print("User is NOT logged in, sending them to the intro screen...");
+          print("User is NOT logged in, sending them to the intro screen...");
           // User is NOT logged in, go to login screen
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => IntroScreen()));

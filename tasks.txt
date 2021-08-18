@@ -1,5 +1,9 @@
-- Resolve the home page error after verification
-- See if the notification red circle is working
+
+  - In all events make it so that the spots actually show the real one
+
+  - Add the resend code button (not visible?)
+
+  - See if the notification red circle is working
 
 - To get the event pulls set up from the firestore
 - To set up UI for empty all events / user events (keep it simple)

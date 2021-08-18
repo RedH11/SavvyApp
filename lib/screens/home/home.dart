@@ -1,16 +1,10 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cryptoapp/screens/intro/intro.dart';
 import 'package:cryptoapp/screens/widgets/app_bar.dart';
 import 'package:cryptoapp/screens/widgets/loading.dart';
-import 'package:cryptoapp/theme/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptoapp/screens/home/components/home_body.dart';
-import 'package:cryptoapp/models/event.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart';
 
 // Main home class
@@ -26,19 +20,17 @@ class HomeScreen extends StatelessWidget {
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
     // Get all the event information
-    var allEvents = await _firestore.collection('events').get();
-
-    print(userUID);
+    QuerySnapshot allEvents = await _firestore.collection('events').orderBy('startTime', descending: false).get();
 
     var userInfo = await _firestore.collection('users')
         .where('uid', isEqualTo: userUID)
         .get();
 
-    print(userInfo.docs.first.data());
+    var userData = userInfo.docs.first.data();
 
-    double balance = 0.0;
-    int invitesAvailable = 0;
-    List userEvents = [""];
+    double balance = userData['balance'];
+    int invitesAvailable = userData['invites_available'];
+    List userEvents = userData['current_events'];
 
     // Get the user time zone offset
     final String currentTimeZone = await FlutterNativeTimezone.getLocalTimezone();
@@ -77,11 +69,14 @@ class HomeScreen extends StatelessWidget {
     return FutureBuilder<List<dynamic>>(
         future: _getUserInfo(),
     builder: (context, snapshot) {
+
       if (snapshot.hasError) {
         print("error in home snapshot");
         return loadingScreen;
+
       } else if (snapshot.hasData) {
         return _buildHomePage(snapshot.data, context);
+
       } else {
         return loadingScreen;
       }

@@ -22,8 +22,18 @@ class _YourEventsState extends State<YourEvents> {
   @override
   Widget build(BuildContext context) {
 
-    var homeDisplay = HomeDisplay();
-    var yourEventsDisplay = homeDisplay.getUserEventsDisplay(userEvents, utcOffset);
+    var yourEventsDisplay;
+
+    // If there are no user events
+    if (userEvents == []) {
+      yourEventsDisplay = Container(
+        width: 0,
+        height: 0,
+      );
+    } else {
+      var homeDisplay = HomeDisplay();
+      yourEventsDisplay = homeDisplay.getUserEventsDisplay(userEvents, utcOffset);
+    }
 
     Widget yourEventsBody = Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),

@@ -29,15 +29,12 @@ class _AllEventsState extends State<AllEvents> {
     Widget allEventsBody = Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child:
-            Align(
-                alignment: Alignment.topLeft,
-                child: Column(
+            Column(
                   children: <Widget>[
-                    Text("🥇All Events"),
+                    Align(alignment: Alignment.topLeft, child: Text("🥇 All Events")),
+                    SizedBox(height: 5,),
                     allEventsDisplay
                   ],
-                )
-
             )
     );
 
