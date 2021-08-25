@@ -1,9 +1,7 @@
-import 'dart:io';
 
-import 'package:cryptoapp/models/event.dart';
 import 'package:cryptoapp/screens/widgets/home_display.dart';
-import 'package:flutter/material.dart';
 import 'package:cryptoapp/theme/constants.dart';
+import 'package:flutter/material.dart';
 
 class AllEvents extends StatefulWidget {
   var allEvents, utcOffset;

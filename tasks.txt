@@ -1,4 +1,5 @@
 
+Need to make the verification skip the username part if the phone number is already in use
 
   - On my phone it overflows in the intro: definitely need to make everything flexible:
     https://www.youtube.com/watch?v=z7P1OFLw4kY&ab_channel=FilledStacks
@@ -10,8 +11,6 @@
   - AND need to test if it doesn't show events when they are ongoing
 
   - Add the resend code button (not visible?)
-
-  - See if the notification red circle is working
 
 - To get the event pulls set up from the firestore
 - To set up UI for empty all events / user events (keep it simple)

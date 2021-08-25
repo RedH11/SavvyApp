@@ -20,7 +20,7 @@ class NotificationsDisplay {
 
   Widget getNoNotificationsText() {
     return Center(
-      child: Text("You have no new notifications", style: mainBodyStyle,),
+      child: Text("You have no new notifications", style: MAIN_BODY_STYLE,),
     );
   }
 

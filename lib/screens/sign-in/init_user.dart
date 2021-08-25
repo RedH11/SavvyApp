@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cryptoapp/screens/home/home.dart';
+import 'package:cryptoapp/screens/prelaunch/prelaunch.dart';
 import 'package:cryptoapp/screens/sign-in/username_entry.dart';
 import 'package:cryptoapp/screens/startup/authentication_service.dart';
 import 'package:cryptoapp/theme/constants.dart';
@@ -69,7 +69,7 @@ class InitUserScreen extends StatelessWidget {
       // Go to the home page after initializing the starting info of the user
       await authService.initializeUser(userUID, username, phoneNumber);
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => HomeScreen(userUID)));
+          MaterialPageRoute(builder: (context) => PrelaunchScreen()));
     } else {
       // Go back to the username entry page
       _showErrorDialog("Username Taken", "Please enter another username", phoneNumber, context);
@@ -78,9 +78,9 @@ class InitUserScreen extends StatelessWidget {
 
     // user defined function
     void _showErrorDialog(String title, String content, String phoneNumber, BuildContext parentContext) {
-      // flutter defined function
       showDialog(
         context: parentContext,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           // return object of type Dialog
           return AlertDialog(

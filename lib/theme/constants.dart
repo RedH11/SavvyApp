@@ -2,6 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+/* Screen Sizing */
+// Small screen < #
+const SMALL_SCREEN = 680;
+// Large screen > #
+const LARGE_SCREEN = 950;
+
 /* COLORS */
 // Almost black blue
 const primaryTextColor = Color.fromARGB(255, 56, 55, 74);
@@ -48,23 +54,71 @@ const APP_BAR_ITEM_COLOR = Color.fromARGB(220, 56, 55, 74);
 
 /* FONT */
 const main_font = "Sofia Pro";
-const mainHeadingStyle = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.normal, color: primaryTextColor);
-const mainHeadingBoldStyle = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.bold, color: primaryTextColor);
-const mainBodyStyle = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.normal, color: primaryTextColor);
-const mainBodyBoldStyle = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.bold, color: primaryTextColor);
-const topHeadingStyle = TextStyle(fontFamily: main_font, fontSize: 25, color: primaryTextColor);
-const sectionTitleStyle = TextStyle(fontFamily: main_font, fontSize: 15, color: primaryTextColor);
-const sectionTitleBoldStyle = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.bold, color: primaryTextColor);
-const eventTitleStyle = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.w400, color: primaryTextColor);
-const eventSubtitleStyle = TextStyle(fontFamily: main_font, fontSize: 10, fontWeight: FontWeight.normal, color: secondaryTextColor);
-const eventTimerStyle = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.bold, color: primaryTextColor);
-const levelDisplayStyle = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic, color: greenTextColor);
-const redeemRewardsStyle = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white);
-const goalsTitleStyle = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.bold, color: primaryTextColor);
-const goalDisplayStyle = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
-const FINAL_NEXT_PAGE_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: Colors.white);
+// Intro
+const MAIN_HEADING_STYLE = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.normal, color: primaryTextColor);
+const MAIN_HEADING_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 45, fontWeight: FontWeight.normal, color: primaryTextColor);
+const MAIN_HEADING_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.normal, color: primaryTextColor);
+const MAIN_HEADING_BOLD_STYLE = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.bold, color: primaryTextColor);
+const MAIN_HEADING_BOLD_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 45, fontWeight: FontWeight.bold, color: primaryTextColor);
+const MAIN_BODY_STYLE = TextStyle(fontFamily: main_font, fontSize: 18, fontWeight: FontWeight.normal, color: primaryTextColor);
+const MAIN_BODY_BOLD_STYLE = TextStyle(fontFamily: main_font, fontSize: 18, fontWeight: FontWeight.bold, color: primaryTextColor);
+const MAIN_BODY_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.normal, color: primaryTextColor);
+const MAIN_BODY_BOLD_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.bold, color: primaryTextColor);
+const MAIN_BODY_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.normal, color: primaryTextColor);
+const MAIN_BODY_BOLD_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.bold, color: primaryTextColor);
+// Event description
+const TOP_HEADING_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, color: primaryTextColor);
+const SECTION_TITLE_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, color: primaryTextColor);
+const SECTION_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, color: primaryTextColor);
+const SECTION_TITLE_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, color: primaryTextColor);
+const SECTION_TITLE_BOLD_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.bold, color: primaryTextColor);
+const SECTION_TITLE_BOLD_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.bold, color: primaryTextColor);
+const SECTION_TITLE_BOLD_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.bold, color: primaryTextColor);
+
+const EVENT_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 18, fontWeight: FontWeight.w400, color: primaryTextColor);
+const EVENT_SUBTITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const EVENT_TIMER_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.bold, color: primaryTextColor);
+const EVENT_TITLE_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 14, fontWeight: FontWeight.w400, color: primaryTextColor);
+const EVENT_SUBTITLE_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 10, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const EVENT_TIMER_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.bold, color: primaryTextColor);
+const EVENT_TITLE_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 26, fontWeight: FontWeight.w400, color: primaryTextColor);
+const EVENT_SUBTITLE_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const EVENT_TIMER_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 22, fontWeight: FontWeight.bold, color: primaryTextColor);
+
+// Reward description
+const LEVEL_DISPLAY_STYLE = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic, color: greenTextColor);
+const REDEEM_REWARDS_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white);
+const GOALS_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.bold, color: primaryTextColor);
+const GOAL_DISPLAY_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.normal, color: primaryTextColor);
+
+const LEVEL_DISPLAY_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 26, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic, color: greenTextColor);
+const REDEEM_REWARDS_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 10, fontWeight: FontWeight.normal, color: Colors.white);
+const GOALS_TITLE_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 21, fontWeight: FontWeight.bold, color: primaryTextColor);
+const GOAL_DISPLAY_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: primaryTextColor);
+
+const LEVEL_DISPLAY_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 40, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic, color: greenTextColor);
+const REDEEM_REWARDS_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.normal, color: Colors.white);
+const GOALS_TITLE_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.bold, color: primaryTextColor);
+const GOAL_DISPLAY_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
+
+const FINAL_NEXT_PAGE_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 24, fontWeight: FontWeight.normal, color: Colors.white);
+const FINAL_NEXT_PAGE_BUTTON_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.normal, color: Colors.white);
+const FINAL_NEXT_PAGE_BUTTON_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: Colors.white);
+
+// Get phone number
+const TOS_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 10, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const TOS_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const TOS_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const INTRO_TITLE_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
+const INTRO_TITLE_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 30, fontWeight: FontWeight.normal, color: primaryTextColor);
+const INTRO_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.normal, color: primaryTextColor);
+
+// Verification screen
+const RESEND_CODE_STYLE = TextStyle(fontFamily: main_font, fontSize: 16, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const RESEND_CODE_SMALL_STYLE = TextStyle(fontFamily: main_font, fontSize: 12, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const RESEND_CODE_LARGE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: secondaryTextColor);
+
 const TEXT_FIELD_LABEL_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.normal, color: TEXT_FIELD_COLOR);
-const INTRO_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
 const TEXT_FIELD_INPUT_STYLE = TextStyle(fontFamily: main_font, fontSize: 25, fontWeight: FontWeight.normal, color: primaryTextColor);
 const STATS_COIN_VAL_STYLE = TextStyle(fontFamily: main_font, fontSize: 60, fontWeight: FontWeight.normal, color: primaryTextColor);
 const STATS_SECTION_TITLE_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
@@ -92,6 +146,12 @@ const HOME_USER_EVENT_PERCENTAGE_STYLE = TextStyle(fontFamily: main_font, fontSi
 const HOME_TIMER_EMOJI_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
 const ALERT_LOGOUT_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.bold, color: LOG_OUT_BUTTON_COLOR);
 const ALERT_CANCEL_BUTTON_STYLE = TextStyle(fontFamily: main_font, fontSize: 20, fontWeight: FontWeight.normal, color: primaryTextColor);
+const PRELAUNCH_TIMER_STYLE = TextStyle(fontFamily: main_font, fontSize: 40, fontWeight: FontWeight.normal, color: primaryTextColor);
+const PRELAUNCH_TIMER_COLON_STYLE = TextStyle(fontFamily: main_font, fontSize: 40, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const PRELAUNCH_TIMER_LABEL_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.normal, color: primaryTextColor);
+const PRELAUNCH_TIMER_LABEL_COLORED_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.normal, color: BUTTON_COLOR);
+const PRELAUNCH_BODY_STYLE = TextStyle(fontFamily: main_font, fontSize: 15, fontWeight: FontWeight.normal, color: secondaryTextColor);
+const PRELAUNCH_HEADING_STYLE = TextStyle(fontFamily: main_font, fontSize: 45, fontWeight: FontWeight.normal, color: primaryTextColor);
 
 /* SPACING */
 const double sidePadding = 20;

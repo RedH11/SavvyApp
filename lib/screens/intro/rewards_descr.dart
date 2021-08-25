@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'components/rewards_descr_body.dart';
 
+import 'components/rewards_descr_body.dart';
 
 
 class RewardsDescr extends StatelessWidget {

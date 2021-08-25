@@ -1,4 +1,3 @@
-import 'package:cryptoapp/screens/intro/components/widget_components/level_progress_bar.dart';
 import 'package:cryptoapp/screens/widgets/app_bar.dart';
 import 'package:cryptoapp/screens/widgets/stats_display.dart';
 import 'package:cryptoapp/screens/widgets/white_container.dart';

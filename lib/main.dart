@@ -1,18 +1,8 @@
-import 'package:cryptoapp/screens/events/events_info.dart';
-import 'package:cryptoapp/screens/events/events_loading.dart';
-import 'package:cryptoapp/screens/home/home.dart';
-import 'package:cryptoapp/screens/loading/loading.dart';
-import 'package:cryptoapp/screens/notifications/notifications.dart';
-import 'package:cryptoapp/screens/personal_stats/personal_stats.dart';
-import 'package:cryptoapp/screens/settings/settings.dart';
-import 'package:cryptoapp/screens/sign-in/get_phone_num.dart';
 import 'package:cryptoapp/screens/startup/startup.dart';
-import 'package:cryptoapp/screens/widgets/stats_display.dart';
+import 'package:cryptoapp/theme/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:cryptoapp/screens/intro/intro.dart';
-import 'package:cryptoapp/theme/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
@@ -21,7 +11,18 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 ///
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Only allow the app to be viewed in portrait
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
   runApp(MyApp());
+
+  ///runApp(DevicePreview(
+   /// enabled: !kReleaseMode,
+    ///builder: (context) => MyApp(), // Wrap your app
+  ///),);
 }
 
 class MyApp extends StatelessWidget {
@@ -45,15 +46,18 @@ class MyApp extends StatelessWidget {
 
           // Default TextThemes
           textTheme: TextTheme(
-            headline1: mainHeadingStyle,
-            headline2: sectionTitleBoldStyle,
-            bodyText1: mainBodyStyle,
+            headline1: MAIN_HEADING_STYLE,
+            headline2: SECTION_TITLE_BOLD_STYLE,
+            bodyText1: MAIN_BODY_STYLE,
           ),
           buttonColor: BUTTON_COLOR,
           visualDensity: VisualDensity
               .adaptivePlatformDensity // Conforms the UI to the screen size
 
           ),
+      // For device preview extension
+      //locale: DevicePreview.locale(context), // Add the locale here
+      //builder: DevicePreview.appBuilder, // Add the builder here
       home:  FutureBuilder(
         future: _fbApp,
         builder: (context, snapshot) {

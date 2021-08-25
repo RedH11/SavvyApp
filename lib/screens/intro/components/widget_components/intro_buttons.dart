@@ -1,18 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:cryptoapp/theme/constants.dart';
+import 'package:flutter/material.dart';
 
 class NextPageButton {
 
-  static Align init(BuildContext context, nextScreen) {
+  static Align init(BuildContext context, nextScreen, buttonSize, buttonPadding) {
     return Align(
         alignment: Alignment.bottomRight, child:  Container(
-        margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
+        margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 40),
         decoration:
         BoxDecoration(
           color: BUTTON_COLOR,
           shape: BoxShape.circle,
+
         ),
         child: new IconButton(
+          iconSize: buttonSize,
+          padding: EdgeInsets.all(buttonPadding),
             icon: new Icon(Icons.arrow_forward_ios, color: Colors.white),
             onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => nextScreen),
@@ -38,7 +41,7 @@ class RedeemRewardsButton {
       ),
       child: new TextButton(
               onPressed: () {},
-              child: Text("Redeem Rewards!", style: redeemRewardsStyle)
+              child: Text("Redeem Rewards!", style: REDEEM_REWARDS_STYLE)
           )
       ),
     );
@@ -47,12 +50,13 @@ class RedeemRewardsButton {
 
 class FinalNextPageButton {
 
-  static Align init(BuildContext context, nextScreen) {
+  static Align init(BuildContext context, nextScreen, height, finalNextPageButtonStyle) {
     return Align(
-      alignment: Alignment.bottomCenter, child:  Container(
-        width: 300,
-        height: 50,
-        margin: EdgeInsets.fromLTRB(0, 0, sidePadding, 0),
+      alignment: Alignment.bottomCenter, child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          width: double.infinity,
+        height: height,
         decoration:
         BoxDecoration(
             color: BUTTON_COLOR,
@@ -61,9 +65,9 @@ class FinalNextPageButton {
         child: new TextButton(
             onPressed: () => Navigator.push(context,
               MaterialPageRoute(builder: (context) => nextScreen)),
-            child: Text("Let's Get Started!", style: FINAL_NEXT_PAGE_BUTTON_STYLE)
+            child: Text("Let's Get Started!", style: finalNextPageButtonStyle)
         )
-    ),
+    )),
     );
   }
 }

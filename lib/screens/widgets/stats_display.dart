@@ -187,13 +187,13 @@ class StatsDisplay {
       String goalProgress = allGoals[goalName].toString();
 
       Align goalNameDisplay = AlignmentPadding.forWidget(
-          Text(goalName, style: goalDisplayStyle,),
+          Text(goalName, style: GOAL_DISPLAY_STYLE,),
           Alignment.centerLeft,
           EdgeInsets.symmetric(vertical: 0, horizontal: 10)
       );
 
       Align goalCountDisplay = AlignmentPadding.forWidget(
-          Text(goalProgress, style: goalDisplayStyle,),
+          Text(goalProgress, style: GOAL_DISPLAY_STYLE,),
           Alignment.centerRight,
           EdgeInsets.fromLTRB(20, 0, 0, 0)
       );

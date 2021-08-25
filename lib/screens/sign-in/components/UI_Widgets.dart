@@ -1,30 +1,39 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cryptoapp/screens/startup/authentication_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cryptoapp/theme/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 
 class WidgetGenerator {
 
-  Padding getTitle(String title) {
+  Padding getTitleTopCenter(String title, style) {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
         child: Align(
           alignment: Alignment.topCenter,
-          child: Text(title, style: INTRO_TITLE_STYLE, textAlign: TextAlign.center,),
+          child: Text(title, style: style, textAlign: TextAlign.center,),
         )
     );
   }
 
-  Padding getSubTitle(String title) {
+  Padding getTitleCenter(String title, style) {
+    return Padding(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(title, style: style, textAlign: TextAlign.center,),
+        )
+    );
+  }
+
+
+
+  Padding getSubTitle(String title, style) {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
         child: Align(
           alignment: Alignment.topLeft,
-          child: Text(title, style: mainBodyStyle, textAlign: TextAlign.center),
+          child: Text(title, style: style, textAlign: TextAlign.left),
         )
     );
   }
@@ -63,14 +72,14 @@ class WidgetGenerator {
                   Navigator.push(context,
                         MaterialPageRoute(builder: (context) => nextScreen));
                 },
-                label: Text("Enter a New Phone", style: mainBodyStyle,),
+                label: Text("Enter a New Phone", style: MAIN_BODY_STYLE,),
                 icon: Icon(Icons.arrow_back_ios, color: currentColor, size: 20,),
               ),
     ),
     );
   }
 
-    Align getNextPageButton(BuildContext context, nextScreen, bool isEnabled) {
+    Align getNextPageButton(BuildContext context, nextScreen, bool isEnabled, double _height, TextStyle style) {
 
         var currentColor = BUTTON_COLOR;
 
@@ -80,9 +89,9 @@ class WidgetGenerator {
 
         return Align(
         alignment: Alignment.bottomCenter, child:  Container(
-          width: 280,
-          height: 50,
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+          width: double.infinity,
+          height: _height,
+          margin: EdgeInsets.symmetric(horizontal: 40),
           decoration:
           BoxDecoration(
               color: currentColor,
@@ -99,7 +108,7 @@ class WidgetGenerator {
                 }
               }
               ,
-              child: Text("Next", style: FINAL_NEXT_PAGE_BUTTON_STYLE)
+              child: Text("Next", style: style)
           )
       ),
       );

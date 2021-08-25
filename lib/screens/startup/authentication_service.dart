@@ -7,6 +7,17 @@ class AuthenticationService {
 
   var _verificationID;
 
+  // Even if firebase shows that the user is logged in, checks for the
+  // state where the user doesn't complete login which means their user has
+  // no info in it
+  Future<bool> isUserCreated(String userUID) async {
+    var userInfo = await _firestore.collection('users')
+        .where('uid', isEqualTo: userUID)
+        .get();
+
+    return userInfo.docs.first.exists;
+  }
+
   Future<bool> getTestUser() async {
     _firebaseAuth.signInAnonymously();
     return true;
@@ -117,7 +128,7 @@ class AuthenticationService {
       // Core info
       "uid" : userUID,
       "username" : username,
-      "phoneNumber" : phoneNumber,
+      "phone_number" : phoneNumber,
       "notifications_enabled" : true,
       "balance" : 0.00,
       "invites_available" : 1, // all users start with one invite

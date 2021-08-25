@@ -137,14 +137,14 @@ class HomeDisplay {
           }
 
           return Text(
-              '$hoursInTimer:$minutesInTimer:$secondsInTimer TO JOIN', style: eventTimerStyle);
+              '$hoursInTimer:$minutesInTimer:$secondsInTimer TO JOIN', style: EVENT_TIMER_STYLE);
         },
       );
     } else {
       // If the event isn't live, show the date when it will be
       String formattedDate = DateFormat('MM/dd, ha').format(eventStartTime).toLowerCase();
       String eventStartString = "🚀 $formattedDate";
-      eventTimer = Text(eventStartString, style: eventTimerStyle,);
+      eventTimer = Text(eventStartString, style: EVENT_TIMER_STYLE,);
 
       spotsOpen = "Starting Soon";
     }
@@ -181,9 +181,9 @@ class HomeDisplay {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(eventAbbrv, style: eventTitleStyle),
+                        Text(eventAbbrv, style: EVENT_TITLE_STYLE),
                         SizedBox(height: 3),
-                        Text(spotsOpen, style: eventSubtitleStyle),
+                        Text(spotsOpen, style: EVENT_SUBTITLE_STYLE),
                       ],
                     ),
                     SizedBox(width: 20,),
