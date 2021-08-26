@@ -1,8 +1,9 @@
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 
 class WidgetGenerator {
 
@@ -51,7 +52,7 @@ class WidgetGenerator {
             appContext: context,
             cursorColor: BUTTON_COLOR,
             pinTheme: PinTheme(
-              inactiveColor: primaryTextColor,
+              inactiveColor: PRIMARY_TEXT_COLOR,
               fieldHeight: 50,
               fieldWidth: 40,
             ),
@@ -62,7 +63,7 @@ class WidgetGenerator {
 
   Align getBackButton(BuildContext context, nextScreen) {
 
-    Color currentColor = primaryTextColor;
+    Color currentColor = PRIMARY_TEXT_COLOR;
 
     return Align(
       alignment: Alignment.topLeft, child:  Container(
@@ -117,7 +118,7 @@ class WidgetGenerator {
       Align getBottomGreyContainer() {
         return Align(
           alignment: Alignment.bottomCenter,
-          child: Container(height: 80, color: backgroundColor,)
+          child: Container(height: 80, color: BACKGROUND_COLOR,)
         );
       }
 }

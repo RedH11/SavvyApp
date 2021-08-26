@@ -2,12 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
 import 'package:cryptoapp/screens/prelaunch/prelaunch.dart';
 import 'package:cryptoapp/screens/startup/authentication_service.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 class StartupScreen extends StatelessWidget {
 
   static const loadingScreen = Scaffold(
@@ -54,7 +55,7 @@ class StartupScreen extends StatelessWidget {
     FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     await _firebaseAuth.signOut();
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => IntroScreen()));
+        MaterialPageRoute(builder: (context) => FirstScreen()));
   }
 
   @override
@@ -83,7 +84,7 @@ class StartupScreen extends StatelessWidget {
         } else {
           print("User is NOT logged in, sending them to the intro screen...");
           // User is NOT logged in, go to login screen
-          Navigator.push(context, MaterialPageRoute(builder: (context) => IntroScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => FirstScreen()));
         }
     });
 

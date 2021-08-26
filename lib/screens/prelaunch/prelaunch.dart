@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cryptoapp/screens/widgets/loading.dart';
 import 'package:cryptoapp/sizing/dynamic_widget_builder.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
+import 'package:cryptoapp/widgets/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:lottie/lottie.dart';
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 
 class PrelaunchScreen extends StatelessWidget {
 
@@ -212,7 +214,7 @@ class PrelaunchScreen extends StatelessWidget {
           }
 
         return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: BACKGROUND_COLOR,
         body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -228,7 +230,7 @@ class PrelaunchScreen extends StatelessWidget {
                   children: <Widget>[
                   Icon(
                     Icons.location_on,
-                    color: secondaryTextColor,
+                    color: SECONDARY_TEXT_COLOR,
                     size: 24.0,
                   ),
                   Text(" St. Andrews, Scotland", style: PRELAUNCH_BODY_STYLE)

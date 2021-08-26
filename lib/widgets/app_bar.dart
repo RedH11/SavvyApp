@@ -1,10 +1,11 @@
 import 'package:cryptoapp/screens/notifications/notifications.dart';
 import 'package:cryptoapp/screens/settings/settings.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 ///
 ///
 /// NEED TO HAVE THE APP BAR NAVIGATE TO THE RIGHT SCREENS
@@ -106,7 +107,7 @@ class TopAppBar {
                 onPressed: () => {
                   Navigator.pop(context)
                 },
-                icon: Icon(Icons.arrow_back_ios, color: primaryTextColor, size: 22))),
+                icon: Icon(Icons.arrow_back_ios, color: PRIMARY_TEXT_COLOR, size: 22))),
       );
     }
 
@@ -117,7 +118,7 @@ class TopAppBar {
       leading: backIcon,
       actions: [screenMenuIcons],
       foregroundColor: Colors.transparent,
-      backgroundColor: backgroundColor,
+      backgroundColor: BACKGROUND_COLOR,
       toolbarHeight: 80,
       titleSpacing: 30,
       shadowColor: Colors.transparent, // can turn shadow on or off

@@ -1,7 +1,8 @@
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 class EventsDisplay {
 
   Padding getDescriptionBlock(emoji, description) {

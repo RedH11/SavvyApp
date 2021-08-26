@@ -1,4 +1,12 @@
 
+- FROM APP IN REAL LIFE
+    Animations between screens, and have each one take a second
+    Something more to do on the home page (invite people, make meta mask account, go to website)
+
+    Lower the rocket and general text on the small phone
+
+
+
 Need to make the verification skip the username part if the phone number is already in use
 
   - On my phone it overflows in the intro: definitely need to make everything flexible:

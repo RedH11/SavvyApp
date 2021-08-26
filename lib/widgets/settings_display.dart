@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoapp/screens/intro/intro.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 class SettingsDisplay {
 
   Padding getDisplay(leftText) {
@@ -45,7 +47,7 @@ class SettingsDisplay {
                   alignment: Alignment.centerRight,
                   child: IconButton(
                      icon: Icon(Icons.arrow_forward),
-                     color: primaryTextColor,
+                     color: PRIMARY_TEXT_COLOR,
                      iconSize: 25.0,
                      onPressed: () => {
                        if (url.toString().length > 0) {
@@ -90,7 +92,7 @@ class SettingsDisplay {
           await _firebaseAuth.signOut().then((void _) => {
             // Successfully signed out, return to intro page
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => IntroScreen()))
+                MaterialPageRoute(builder: (context) => FirstScreen()))
           }).catchError((error) => {
             // An error happened.
             print("Error logging out.")

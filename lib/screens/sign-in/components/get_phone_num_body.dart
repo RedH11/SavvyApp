@@ -1,9 +1,10 @@
 import 'package:cryptoapp/sizing/dynamic_widget_builder.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 import '../get_phone_num.dart';
 import '../verification.dart';
 import 'UI_Widgets.dart';
@@ -43,7 +44,7 @@ class GetPhoneNumBody extends State<GetPhoneNumScreen> {
               ),
               ignoreBlank: false,
               autoValidateMode: AutovalidateMode.disabled,
-              selectorTextStyle: TextStyle(color: primaryTextColor),
+              selectorTextStyle: TextStyle(color: PRIMARY_TEXT_COLOR),
               initialValue: initialCountry,
               countries: ['US', 'GB'],
               maxLength: 10,

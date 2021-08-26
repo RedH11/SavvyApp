@@ -1,8 +1,11 @@
-import 'package:cryptoapp/screens/widgets/white_container.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/settings.dart';
+import 'package:cryptoapp/widgets/containers/white_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 
 class NotificationsDisplay {
 
@@ -65,7 +68,7 @@ class NotificationsDisplay {
                 style: INVITE_INPUT_STYLE,
                 autocorrect: false,
                 maxLength: 12,
-                cursorColor: primaryTextColor,
+                cursorColor: PRIMARY_TEXT_COLOR,
                 decoration: InputDecoration(
                     hintText: "441234567890"
                 ),

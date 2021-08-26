@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoapp/screens/home/components/home_body.dart';
-import 'package:cryptoapp/screens/widgets/app_bar.dart';
-import 'package:cryptoapp/screens/widgets/loading.dart';
+import 'package:cryptoapp/widgets/app_bar.dart';
+import 'package:cryptoapp/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:http/http.dart';

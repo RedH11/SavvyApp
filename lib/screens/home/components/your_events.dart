@@ -1,5 +1,5 @@
-import 'package:cryptoapp/screens/widgets/home_display.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
+import 'package:cryptoapp/widgets/home_display.dart';
 import 'package:flutter/material.dart';
 
 class YourEvents extends StatefulWidget {

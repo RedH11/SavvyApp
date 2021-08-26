@@ -1,9 +1,10 @@
-import 'package:cryptoapp/screens/widgets/app_bar.dart';
-import 'package:cryptoapp/screens/widgets/settings_display.dart';
-import 'package:cryptoapp/screens/widgets/white_container.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/widgets/app_bar.dart';
+import 'package:cryptoapp/widgets/settings_display.dart';
+import 'package:cryptoapp/widgets/containers/white_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 
 class SettingsScreen extends StatelessWidget {
 
@@ -80,7 +81,7 @@ class SettingsBody extends State<SettingsState> {
     );
 
     return Container(
-          color: backgroundColor,
+          color: BACKGROUND_COLOR,
           child: Column(
         children: <Widget> [ WhiteContainer.init(
               10.0,

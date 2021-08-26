@@ -1,6 +1,10 @@
 import 'package:cryptoapp/screens/startup/startup.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/settings.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -17,12 +21,12 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  runApp(MyApp());
+  //runApp(MyApp());
 
-  ///runApp(DevicePreview(
-   /// enabled: !kReleaseMode,
-    ///builder: (context) => MyApp(), // Wrap your app
-  ///),);
+  runApp(DevicePreview(
+    enabled: !kReleaseMode,
+    builder: (context) => MyApp(), // Wrap your app
+  ),);
 }
 
 class MyApp extends StatelessWidget {
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           // Default Brightness and Colors
           brightness: Brightness.light,
-          primaryColor: primaryTextColor,
+          primaryColor: PRIMARY_TEXT_COLOR,
 
           // Default font family
           fontFamily: "Helvetica Neue",
@@ -56,8 +60,8 @@ class MyApp extends StatelessWidget {
 
           ),
       // For device preview extension
-      //locale: DevicePreview.locale(context), // Add the locale here
-      //builder: DevicePreview.appBuilder, // Add the builder here
+      locale: DevicePreview.locale(context), // Add the locale here
+      builder: DevicePreview.appBuilder, // Add the builder here
       home:  FutureBuilder(
         future: _fbApp,
         builder: (context, snapshot) {

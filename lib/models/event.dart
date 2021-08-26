@@ -1,4 +1,4 @@
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
 
 class InvestingEvent {
   ///

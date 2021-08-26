@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoapp/screens/prelaunch/prelaunch.dart';
 import 'package:cryptoapp/screens/sign-in/username_entry.dart';
-import 'package:cryptoapp/screens/widgets/loading.dart';
+import 'package:cryptoapp/widgets/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

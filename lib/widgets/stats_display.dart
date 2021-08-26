@@ -1,8 +1,10 @@
-import 'package:cryptoapp/screens/intro/components/widget_components/level_progress_bar.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/widgets/level_progress_bar.dart';
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 import 'alignment_padding.dart';
 
 class StatsDisplay {

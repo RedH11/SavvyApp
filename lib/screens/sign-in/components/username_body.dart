@@ -1,10 +1,11 @@
 import 'package:cryptoapp/screens/sign-in/init_user.dart';
 import 'package:cryptoapp/sizing/dynamic_widget_builder.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 import '../username_entry.dart';
 import 'UI_Widgets.dart';
 
@@ -43,7 +44,7 @@ class UsernameEntryBody extends State<UsernameEntryScreen> {
                     enableSuggestions: false,
                     style: TEXT_FIELD_INPUT_STYLE,
                     autocorrect: false,
-                    cursorColor: primaryTextColor,
+                    cursorColor: PRIMARY_TEXT_COLOR,
                     decoration: InputDecoration(border: InputBorder.none),
                     onChanged: (value) => {
                       setState(() {

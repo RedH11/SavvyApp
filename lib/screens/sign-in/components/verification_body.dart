@@ -1,7 +1,7 @@
 import 'package:cryptoapp/screens/sign-in/get_phone_num.dart';
 import 'package:cryptoapp/screens/startup/authentication_service.dart';
 import 'package:cryptoapp/sizing/dynamic_widget_builder.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -9,7 +9,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import '../check_existing_user.dart';
 import '../verification.dart';
 import 'UI_Widgets.dart';
-
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
 
 ///
 /// Until I get the app code from the app store,
@@ -91,7 +92,7 @@ class VerificationBody extends State<VerificationScreen> {
               appContext: context,
               cursorColor: BUTTON_COLOR,
               pinTheme: PinTheme(
-                inactiveColor: primaryTextColor,
+                inactiveColor: PRIMARY_TEXT_COLOR,
                 fieldHeight: height,
                 fieldWidth: width,
               ),

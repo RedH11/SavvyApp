@@ -1,7 +1,8 @@
-import 'package:cryptoapp/screens/widgets/app_bar.dart';
-import 'package:cryptoapp/screens/widgets/events_display.dart';
-import 'package:cryptoapp/screens/widgets/white_container.dart';
-import 'package:cryptoapp/theme/constants.dart';
+import 'package:cryptoapp/theme/colors.dart';
+import 'package:cryptoapp/theme/text_styles.dart';
+import 'package:cryptoapp/widgets/app_bar.dart';
+import 'package:cryptoapp/widgets/events_display.dart';
+import 'package:cryptoapp/widgets/containers/white_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -71,7 +72,7 @@ class EventsInfoBody extends StatelessWidget {
     var coinsInvestedText = eventsDisplay.getCoinsDisplay(coinsInvested);
 
     return Container(
-      color: backgroundColor,
+      color: BACKGROUND_COLOR,
       child: Column(children: [
         WhiteContainer.init(
             10.0,
